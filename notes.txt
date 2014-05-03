@@ -1,0 +1,19 @@
+time sqlite3 bluebox.db < sql/bluebox.sql
+
+script/bluebox_create.pl \
+   model DB \
+   DBIC::Schema \
+   BlueBox::DB \
+   create=static generate_pod=0 \
+   dbi:SQLite:bluebox.db \
+   sqlite_unicode=1 \
+   on_connect_call='use_foreign_keys' \
+   quote_names=1 
+
+   
+# regenerate:
+dbicdump -o dump_directory=./lib BlueBox::DB \
+  -o debug=1 -o rescan=1 -o use_moose=1 \
+  -o components='["InflateColumn::DateTime"]' \
+  -o generate_pod=0 \
+  dbi:SQLite:bluebox.db

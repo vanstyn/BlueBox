@@ -7,9 +7,7 @@ CREATE TABLE [account] (
 DROP TABLE IF EXISTS [box_type];
 CREATE TABLE [box_type] (
   [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  [name] varchar(32) NOT NULL,
-  FOREIGN KEY ([account_id]) REFERENCES [account] ([id]) 
-   ON DELETE CASCADE ON UPDATE CASCADE
+  [name] varchar(32) NOT NULL
 );
 INSERT INTO [box_type] VALUES ('1','Small');
 INSERT INTO [box_type] VALUES ('2','Medium');
@@ -18,9 +16,7 @@ INSERT INTO [box_type] VALUES ('3','Large');
 DROP TABLE IF EXISTS [box_status];
 CREATE TABLE [box_status] (
   [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-  [name] varchar(32) NOT NULL,
-  FOREIGN KEY ([account_id]) REFERENCES [account] ([id]) 
-   ON DELETE CASCADE ON UPDATE CASCADE
+  [name] varchar(32) NOT NULL
 );
 INSERT INTO [box_status] VALUES ('1','In Storage');
 INSERT INTO [box_status] VALUES ('2','Inbound');
