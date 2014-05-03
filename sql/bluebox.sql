@@ -29,6 +29,7 @@ CREATE TABLE [warehouse] (
   [name] varchar(32) NOT NULL,
   [address] varchar(255) NOT NULL
 );
+INSERT INTO [warehouse] VALUES ('1','Cincinnati','123 Main St., Cincinnati, OH 45202');
 
 DROP TABLE IF EXISTS [box];
 CREATE TABLE [box] (
@@ -48,4 +49,36 @@ CREATE TABLE [box] (
    ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+DROP TABLE IF EXISTS [item];
+CREATE TABLE [item] (
+  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  [box_id] INTEGER NOT NULL,
+  [name] varchar(32) NOT NULL,
+  [description] text,
+  [value] DECIMAL(8,2),
+  FOREIGN KEY ([box_id]) REFERENCES [box] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE
+);
 
+DROP TABLE IF EXISTS [location];
+CREATE TABLE [location] (
+  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  [account_id] INTEGER NOT NULL,
+  [name] varchar(32) NOT NULL,
+  [address] varchar(255) NOT NULL,
+  FOREIGN KEY ([account_id]) REFERENCES [account] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+DROP TABLE IF EXISTS [shipment];
+CREATE TABLE [shipment] (
+  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  [box_id] INTEGER NOT NULL,
+  [location_id] INTEGER NOT NULL,
+  [created] datetime NOT NULL,
+  [deliver_on] datetime NOT NULL,
+  FOREIGN KEY ([box_id]) REFERENCES [box] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY ([location_id]) REFERENCES [location] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE
+);

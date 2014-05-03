@@ -25,6 +25,7 @@ __PACKAGE__->config(
 
     'Plugin::RapidApp::RapidDbic' => {
       dbic_models => ['DB'],
+      hide_fk_columns => 1,
       configs => {
         DB => {
           grid_params => {
@@ -34,6 +35,34 @@ __PACKAGE__->config(
               destroyable_relspec => ['*'],
             }
           },
+          TableSpecs => {
+            Account => {
+              
+            },
+            BoxType => {
+              
+            },
+            BoxStatus => {
+              
+            },
+            Box => {
+              
+            },
+            Item => {
+              
+            },
+            Location => {
+              
+            },
+            Shipment => {
+              
+            },
+            Warehouse => {
+              
+            
+            }
+            
+          }
         },
       }
     },
