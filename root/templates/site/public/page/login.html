@@ -1,0 +1,39 @@
+[% WRAPPER site/wrapper.html
+  active_section = 'home'
+  title = 'Home'
+-%]
+
+<div class="container">
+
+  <div class="content-box">
+
+    <form action="/auth/login" method="post" class="nice" id="l_form">
+
+      <input type="hidden" id="hashpath" name="hashpath" value="">
+
+      <div class="sepH_c form-group">
+        <div class="elVal">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="oversize expand input-text">
+        </div>
+        <div class="elVal">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="oversize expand input-text">
+        </div>
+      </div>
+
+      <div class="cf" style="padding-bottom:30px;">
+        <!--
+        <label for="remember" class="left"><input type="checkbox" id="remember"> Remember me</label>
+        -->
+        <input type="submit" class="bluebox-orange bluebox-button-ship btn btn-primary btn-lg" value="Login">
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+[% END %]
