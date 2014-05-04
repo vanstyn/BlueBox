@@ -39,9 +39,9 @@
         [% IF username %]
   				<ul class="nav navbar-nav bluebox-nav-lowermenu">
   					<li class="bluebox-red"><a>I am ready to...</a></li>
-  					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="/order">ORDER</a></li>
-  					<li class="bluebox-actionable bluebox-ship"><a href="/ship">SHIP</a></li>
-  					<li class="bluebox-actionable bluebox-retrieve"><a href="/retrieve">RETRIEVE</a></li>
+  					<li class="bluebox-actionable [%- IF active_section == 'order' -%]bluebox-active [%- END -%]bluebox-order"><a href="/order">ORDER</a></li>
+  					<li class="bluebox-actionable [%- IF active_section == 'ship' -%]bluebox-active [%- END -%]bluebox-ship"><a href="/ship">SHIP</a></li>
+  					<li class="bluebox-actionable [%- IF active_section == 'retrieve' -%]bluebox-active [%- END -%]bluebox-retrieve"><a href="/retrieve">RETRIEVE</a></li>
   				</ul>
         [% END %]
         
