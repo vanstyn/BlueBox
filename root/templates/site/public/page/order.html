@@ -1,0 +1,88 @@
+[% WRAPPER site/wrapper.html 
+  active_section = 'order'
+  title = 'Order'
+-%]
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<form class="bluebox-order-data" method="post">
+					<div class="form-group">
+						<label for="bluebox-numboxes">I want</label>
+						<select name="bluebox-numboxes" class="bluebox-numboxes selectpicker">
+						    <option value="1" selected="selected">1 box</option>
+						    <option value="2">2 boxes</option>
+						    <option value="3">3 boxes</option>
+						    <option value="4">4 boxes</option>
+						    <option value="5">5 boxes</option>
+						    <option value="6">6 boxes</option>
+						    <option value="7">7 boxes</option>
+						    <option value="8">8 boxes</option>
+						    <option value="9">9 boxes</option>
+						    <option value="10">10 boxes</option>
+					    </select>
+					</div>
+					<div class="form-group">
+						<label for="bluebox-shipto">Sent to</label>
+						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+						    <option value="0" selected="selected">Home</option>
+						    <option value="1">Office (me)</option>
+						    <option value="2">Wife's Office</option>
+						    <option value="9999">+ New Address</option>
+					    </select>
+					</div>
+					<div class="bluebox-newaddress">
+						<div class="form-group">
+		        			<label for="bluebox-street-1">Street Address 1</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-street-2">Street Address 2</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-city">City</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-city" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-state">State</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-state" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-zip">ZIP</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-zip" placeholder="required" required/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">SEND THEM</a></p>
+					</div>
+				</form>
+				<div class="bluebox-alert-success bluebox-alert-wrapper">
+					<div class="bluebox-alert alert alert-success">
+						<p><strong>Alright!</strong></p>
+						<div>Keep a look-out for <span class="bluebox-feedback bluebox-feedback-numboxes">2 boxes</span> arriving at <span class="bluebox-feedback bluebox-feedback-shipto">home</span> in 2 to 3 days.</div>
+						<br/>
+						<div>Click <a href="#">here</a> to return to Home page.</div>
+					</div>
+					</div>
+					<div class="bluebox-alert-danger bluebox-alert-wrapper">
+						<div class="bluebox-alert alert alert-danger">
+						<p><strong>FAIL!</strong></p>
+						<div>There was an error. Please try again.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+  [% END %]

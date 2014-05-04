@@ -20,8 +20,22 @@ our $TITLE = "BlueBox v" . $VERSION;
 
 __PACKAGE__->config(
     name => 'BlueBox',
-    # Disable deprecated behavior needed by old applications
-    disable_component_resolution_regex_fallback => 1,
+
+    'Model::RapidApp' => {
+      root_template_prefix  => 'site/public/page/',
+      root_template         => 'site/public/page/home',
+      disable_tabgui        => 1
+    },
+    
+    'Controller::RapidApp::Template' => {
+      default_template_extension => 'html',
+      access_params => {
+        #writable_regex      => $tpl_regex,
+        #creatable_regex     => $tpl_regex,
+        #deletable_regex     => $tpl_regex,
+        external_tpl_regex  => '^site\/',
+      }
+    },
 
     'Plugin::RapidApp::RapidDbic' => {
       dbic_models => ['DB'],
