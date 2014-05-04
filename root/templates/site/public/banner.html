@@ -6,7 +6,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="/" class="bluebox-logo">&nbsp;</a></li>
 				</ul>
-        
+
         [% IF username %]
   				<ul class="nav navbar-nav navbar-right">
   					<li><a>Hello, [%- username -%]</a></li>
@@ -15,10 +15,10 @@
           </ul>
         [% ELSE %]
   				<ul class="nav navbar-nav navbar-right">
-  					<li><a href="[%- login_url -%]">Login</a></li>
+  					<li><a href="/login">Login</a></li>
           </ul>
         [% END %]
-        
+
 			</div>
 		</div>
 	</div>
