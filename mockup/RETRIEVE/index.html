@@ -37,8 +37,8 @@
 				<ul class="nav navbar-nav bluebox-nav-lowermenu">
 					<li class="bluebox-red"><a>I am ready to...</a></li>
 					<li class="bluebox-actionable bluebox-order"><a href="#">ORDER</a></li>
-					<li class="bluebox-actionable bluebox-active bluebox-ship"><a href="#">SHIP</a></li>
-					<li class="bluebox-actionable bluebox-retrieve"><a href="#">RETRIEVE</a></li>
+					<li class="bluebox-actionable bluebox-ship"><a href="#">SHIP</a></li>
+					<li class="bluebox-actionable bluebox-active bluebox-retrieve"><a href="#">RETRIEVE</a></li>
 				</ul>
 			</div>
 		</div>
@@ -46,34 +46,16 @@
 
 	<div class="container">
 		<div class="col-sm-offset-3 col-sm-5">
-			<form class="bluebox-order-data" method="post">
+			<form class="bluebox-retrieve-data" method="post">
 				<div class="form-group">
-        			<label for="bluebox-boxname">Box Name</label>
-					<div class="input-group">
-						<input type="text" class="form-control" name="bluebox-boxname" placeholder="required" required/>
-					</div>
-				</div>
-        		<label>Items</label>
-				<div class="form-group">
-					<div class="bluebox-itemrow">
-				        <div class="control-group">
-				            <div class="controls">
-				                <div class="bluebox-itemlist input-append">
-				                    <input name="bluebox-item-description" autocomplete="off" class="span3" type="text" placeholder="optional" />
-				                    <button class="btn btn-info bluebox-button-additem" type="button">+</button>
-				                </div>
-				            </div>
-				        </div>
-					</div>
+        			<label>WHICH BOXES DO YOU WANT TO RETRIEVE?</label>
 				</div>
 				<div class="form-group">
-        			<label for="bluebox-boxvalue">Box Value</label>
-					<div class="input-group">
-						<input type="text" class="form-control" name="bluebox-boxvalue" placeholder="optional"/>
-					</div>
+					<div class="bluebox-boxanditems">
+				    </div>
 				</div>
 				<div class="form-group">
-					<p class="center"><a role="button" class="bluebox-button-ship btn btn-primary btn-lg" href="#">SHIP IT!</a></p>
+					<p class="center"><a role="button" class="bluebox-button-retrieve btn btn-primary btn-lg" href="#">RETRIEVE SELECTED BOXES</a></p>
 				</div>
 			</form>
 			<div class="bluebox-alert-success bluebox-alert-wrapper">

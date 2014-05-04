@@ -168,3 +168,48 @@ body {
 .bluebox-itemlist-spacer {
 	font-size        : 8px;
 }
+
+.bluebox-retrieve-data .checkbox label {
+	font-weight      : bold;
+	font-size        : 1.3em;
+	color            : #A33F23;
+}
+
+.bluebox-boxanditems-boxname input[type="checkbox"] {
+    margin-top       : 8px;
+}
+
+.bluebox-boxanditems-checkbox-wrapper {
+	margin           : 0.9em auto;
+	border           : 1px solid #CCC;
+	padding          : 1em;
+}
+
+.bluebox-boxanditems-boxname {
+	margin-left      : 1em;
+}
+
+.bluebox-retrieve-data .form-group > label {
+	font-size        : 1.1em;
+	text-align       : center;
+}
+
+.bluebox-retrieve-data .form-group:first-child {
+	border-bottom    : 2px solid #CCC;
+}
+
+.center {
+	text-align       : center;
+}
+
+input[type="text"] {
+  	box-sizing       : border-box;// Makes inputs behave like true block-level elements
+}
+
+.bluebox-red * {
+	color            : #7C2B18;
+}
+
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+	width            : 100%;
+}

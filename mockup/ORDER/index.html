@@ -38,7 +38,7 @@
 		<div class="container">
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav bluebox-nav-lowermenu">
-					<li><a>I am ready to...</a></li>
+					<li class="bluebox-red"><a>I am ready to...</a></li>
 					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="#">ORDER</a></li>
 					<li class="bluebox-actionable bluebox-ship"><a href="#">SHIP</a></li>
 					<li class="bluebox-actionable bluebox-retrieve"><a href="#">RETRIEVE</a></li>
@@ -49,7 +49,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-offset-4 col-sm-4">
+			<div class="col-sm-offset-3 col-sm-5">
 				<form class="bluebox-order-data" method="post">
 					<div class="form-group">
 						<label for="bluebox-numboxes">I want</label>
@@ -96,11 +96,6 @@
 						</div>
 						<div class="form-group">
 		        			<label for="bluebox-state">State</label>
-<!--
-							<div class="input-group">
-								<input type="text" class="form-control" name="bluebox-state" placeholder="required" required/>
-							</div>
--->
 							<select name="bluebox-state" class="selectpicker">
 								<option value="" selected="selected">Select a State</option> 
 								<option value="AL">Alabama</option> 
@@ -164,7 +159,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">SEND THEM</a></p>
+						<p class="center"><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">SEND THEM</a></p>
 					</div>
 				</form>
 				<div class="bluebox-alert-success bluebox-alert-wrapper">
