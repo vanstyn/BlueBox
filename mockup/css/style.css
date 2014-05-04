@@ -3,9 +3,9 @@
 }
 
 html, body {
+  font-family     : 'Open Sans', sans-serif;
   padding         : 0;
   margin          : 0 auto;
-  font-family     : 'Open Sans', sans-serif;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
   width           : 960px;
 }
 
-.bluebox-font {
+.bluebox-font, .alert {
   font-family     : "Roboto Condensed", sans-serif;
 }
 
@@ -143,9 +143,20 @@ body {
   background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
 }
 
+.bluebox-feedback {
+	color            : #A33F23;
+}
+
+.alert {
+	font-size     : 1.5em;
+	padding-left  : 48px;
+}
+
 .alert-success {
     background-image : none;
     border-color     : #092643;
     border-width     : 3px;
     background-color : #FFF;
+    color            : #092643;
+    background       : url("../imgs/bluebox-logo-small.png") no-repeat 0.1em 0.6em transparent;
 }
