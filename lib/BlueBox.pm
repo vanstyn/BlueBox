@@ -34,7 +34,8 @@ __PACKAGE__->config(
         #creatable_regex     => $tpl_regex,
         #deletable_regex     => $tpl_regex,
         external_tpl_regex  => '^site\/',
-      }
+      },
+      access_class => 'BlueBox::Template::Access',
     },
 
     'Plugin::RapidApp::RapidDbic' => {

@@ -49,6 +49,12 @@ __PACKAGE__->has_many(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c/CClZLMRcuYr016uLlxmQ
 
 
+sub locations_list {
+  my $self = shift;
+  return [ map { { $_->get_columns } } $self->locations->all ];
+}
+
+
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;
