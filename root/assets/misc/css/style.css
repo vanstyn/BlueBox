@@ -9,7 +9,8 @@ html, body {
 }
 
 body {
-  padding-top     : 69px;
+  padding-top: 86px;
+  background: #fafafa;
 }
 
 .container {
@@ -21,11 +22,16 @@ body {
 }
 
 .bluebox-header, .bluebox-not-header {
-  font-size       : 2em;
+  font-size       : 24px;
 }
 
 .bluebox-header {
   background      : none repeat scroll 0 0 #092643;
+}
+
+.navbar {
+  border: 0;
+  border-radius: 0;
 }
 
 .bluebox-header nav, .bluebox-footer, .bluebox-name {
@@ -84,8 +90,27 @@ body {
 }
 
 .nav.navbar-nav.bluebox-nav-lowermenu li:first-child {
-  width           : 220px;
+  width: 358px;
 }
+
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-order {
+  width: 190px
+}
+
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-ship {
+  width: 160px
+}
+
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-retrieve {
+  width: 220px
+}
+
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-order,
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-ship,
+.nav.navbar-nav.bluebox-nav-lowermenu .bluebox-retrieve {
+  border-left: 1px solid #3a5169;
+}
+
 
 .navbar-nav.bluebox-nav-cue > li > a {
   padding         : 5px;
@@ -94,6 +119,10 @@ body {
 
 .form-group label {
   display         : block;
+  font-size : 24px;
+  font-family: "roboto condensed";
+  color: #a24124;
+  font-weight: normal;
 }
 
 .bluebox-newaddress, .bluebox-alert-wrapper, .bluebox-hidden {
@@ -102,6 +131,9 @@ body {
 
 .bluebox-header.navbar-default .navbar-nav > li > a {
   color           : #FFF;
+  text-align: center;
+  padding: 30px 10px 30px 40px;
+
 }
 
 .bluebox-header.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
@@ -110,7 +142,7 @@ body {
 }
 
 .bluebox-nav-lowermenu li.bluebox-actionable:hover, .bluebox-nav-lowermenu li.bluebox-actionable:focus {
-    background-color: #2610A5;
+    background-color: #2062a7;
     color           : #FFF;
 }
 
@@ -132,47 +164,48 @@ body {
 }
 
 .bluebox-order {
-  background      : url("../imgs/icon_order.svg") no-repeat left center transparent;
+  background      : url("../imgs/icon_order.svg") no-repeat 20px center transparent;
 }
 
 .bluebox-ship {
-  background      : url("../imgs/icon_ship.svg") no-repeat left center transparent;
+  background      : url("../imgs/icon_ship.svg") no-repeat 20px center transparent;
 }
 
 .bluebox-retrieve {
-  background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
+  background      : url("../imgs/icon_retrieve.svg") no-repeat 20px center transparent;
 }
 
 .bluebox-feedback {
-	color            : #A33F23;
+  color            : #A33F23;
 }
 
 .alert {
-	font-size     : 1.5em;
-	padding-left  : 48px;
+  font-size     : 1.5em;
+  padding-left  : 48px;
 }
 
 .alert-success {
     background-image : none;
-    border-color     : #092643;
-    border-width     : 3px;
+    /* border-color     : #092643; */
+    /* border-width     : 3px; */
     background-color : #FFF;
     color            : #092643;
     background       : url("../imgs/bluebox-logo-small.png") no-repeat 0.1em 0.6em transparent;
+    border: 0;
 }
 
 .bluebox-itemrow {
-	margin-left      : 0;
+  margin-left      : 0;
 }
 
 .bluebox-itemlist-spacer {
-	font-size        : 8px;
+  font-size        : 8px;
 }
 
 .bluebox-retrieve-data .checkbox label {
-	font-weight      : bold;
-	font-size        : 1.3em;
-	color            : #A33F23;
+  font-weight: normal;
+  font-size: 24px;
+  color            : #A33F23;
 }
 
 .bluebox-boxanditems-boxname input[type="checkbox"] {
@@ -180,58 +213,114 @@ body {
 }
 
 .bluebox-boxanditems-checkbox-wrapper {
-	margin           : 0.9em auto;
-	border           : 1px solid #CCC;
-	padding          : 1em;
+  margin           : 0.9em auto;
+  /* border           : 1px solid #CCC; */
+  /* padding          : 1em; */
 }
 
 .bluebox-boxanditems-boxname {
-	margin-left      : 1em;
+  margin-left: 1em;
+  font-size: 24px;
+  font-weight: normal;
+  font-family: 'roboto condensed';
 }
 
 .bluebox-retrieve-data .form-group > label {
-	font-size        : 1.1em;
-	text-align       : center;
+  font-size: 24px;
+  text-align       : center;
+  color: #2061a5;
+  padding: 0 0 20px;
 }
 
 .bluebox-retrieve-data .form-group:first-child {
-	border-bottom    : 2px solid #CCC;
+  border-bottom    : 1px solid #cdcdcd;
+  color: #2061a5!important;
 }
 
 .center {
-	text-align       : center;
+  text-align       : center;
 }
 
 .input-group .form-control {
-  	width            : 370px;
+    width            : 370px;
 }
 
 .bluebox-red * {
-	color            : #7C2B18;
+  color            : #7C2B18;
 }
 
 div.bluebox-orange {
-	color            : #A33F23;
-	font-weight      : bold;
-	font-size        : 1.3em;
+  color            : #A33F23;
+  font-weight      : bold;
+  font-size        : 1.3em;
+}
+
+.bluebox-header.navbar-default .navbar-nav > .bluebox-red > a {
+  color: #87bbf1;
+  font-size: 30px;
+  font-weight: normal;
+  padding: 30px 0;
 }
 
 a.bluebox-orange {
-	color            : #FFF;
-	background-color : #A33F23;
+  color            : #FFF;
+  background-color : #A33F23;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-left: 1px solid #3a5169;
+  border-right: 1px solid #3a5169;
+  padding: 0;
+}
+
+.bluebox-not-header {
+  background: #fff;
+}
+
+.bluebox-not-header .navbar-collapse {
+  border: 0;
+  padding: 10px 20px;
+}
+
+.bluebox-not-header .navbar-right {
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 .btn-primary.bluebox-orange {
-	background-color : #A33F23;
-	background-image : none;
-	border-color     : #7C2B18;
+  background-color : #A33F23;
+  background-image : none;
+  border-color     : #7C2B18;
+}
+
+.content-box {
+  background: #fff;
+  max-width: 648px;
+  border: 1px solid #acacac ;
+  margin: 0 auto;
+  padding: 60px 100px;
+}
+
+.btn-primary {
+  box-shadow: none;
+  border: 0;
+}
+
+.bluebox-boxanditems-wrapper {
+  margin: 0 0 30px;
+}
+
+.bluebox-boxanditems-items {
+  background: #fafafa;
+  padding: 20px;
 }
 
 .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-	width            : 100%;
+  width            : 100%;
 }
 
 .bluebox-feedback {
-	font-size        : 1.2em;
-	color            : #A33F23;
+  /* font-size        : 1.2em; */
+  color            : #A33F23;
+  font-weight: bold;
 }
