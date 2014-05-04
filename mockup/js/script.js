@@ -43,4 +43,9 @@ $(document).ready(function() {
 		write_new_address_status({success: true});
 		return false;
 	});
+	
+	// ADD ITEM BUTTON
+	$(".bluebox-button-additem").bind("click", function() {
+		$(this).siblings().append('<input type="text" class="form-control" name="bluebox-boxitems" placeholder="required" required/><div>&nbsp</div>');
+	});
 });
