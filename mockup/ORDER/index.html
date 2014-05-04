@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlueBox</title>
+	<meta></meta>
+	
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Open+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css"/>
+	<link href="../ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../ext/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	<script src="../ext/bootstrap/js/bootstrap.min.js"></script>
+	<link href="../ext/bootstrap-select/bootstrap-select.css" rel="stylesheet" type="text/css"/>
+	<script src="../ext/bootstrap-select/bootstrap-select.js"></script>
+
+	<style>
+		* {
+			text-shadow     : none;
+		}
+
+		html, body {
+			padding         : 0;
+			margin          : 0 auto;
+			font-family     : 'Open Sans', sans-serif;
+		}
+
+		body {
+			padding-top     : 130px;
+		}
+
+		.container {
+			width           : 960px;
+		}
+
+		.bluebox-font {
+			font-family     : "Roboto Condensed", sans-serif;
+		}
+
+		.bluebox-header {
+			font-size       : 2em;
+			background      : none repeat scroll 0 0 #092643;
+		}
+
+		.bluebox-header nav, .bluebox-footer, .bluebox-name {
+			font-weight     : bold;
+		}
+
+		.bluebox-footer {
+			text-align      : center;
+			font-size       : 1.25em;
+		}
+
+		.jumbotron {
+		    padding-bottom  : 12px;
+		    padding-top     : 12px;
+		}
+
+		.bluebox-lightblue {
+			color           : #2162A7;
+		}
+
+		.bluebox-darkblue {
+			color           : #092643;
+		}
+
+		.bluebox-nav-quad {
+			width           : 800px;
+			margin          : auto;
+		}
+
+		.border-right-bottom, .border-left-bottom {
+			border-bottom   : 1px solid #2610A5;
+		}
+
+		.border-right-top, .border-left-top {
+			border-top      : 1px solid #2610A5;
+		}
+
+		.border-right-bottom, .border-right-top {
+			border-right    : 1px solid #2610A5;
+		}
+
+		.border-left-bottom, .border-left-top {
+			border-left     : 1px solid #2610A5;
+		}
+
+		.bluebox-nav-quad {
+			margin          : 1em auto;
+		}
+
+		.bluebox-inline {
+			display         : inline;
+		}
+
+		.nav.navbar-nav.bluebox-nav-lowermenu li {
+			width           : 175px;
+		}
+
+		.nav.navbar-nav.bluebox-nav-lowermenu li:first-child {
+			width           : 220px;
+		}
+
+		.navbar-nav.bluebox-nav-cue > li > a {
+			padding         : 5px;
+			line-height     : 12px;
+		}
+
+		.form-group label {
+			display         : block;
+		}
+
+		.bluebox-newaddress, .bluebox-alert-wrapper {
+			display         : none;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+			$(".selectpicker").selectpicker();
+			
+			$(".bluebox-shipto").bind("change", function(e, ui) {
+				var optionSelected = $("option:selected", this);
+    			var valueSelected = this.value;
+    			if(valueSelected == "9999") {
+    				$(".bluebox-newaddress").css("opacity", 0).slideDown(500).animate({opacity: 1}, {queue: false, duration: 250});
+    			} else {
+    				$(".bluebox-newaddress").css("opacity", 1).slideUp(500).animate({opacity: 0}, {queue: false, duration: 250});
+    			}
+			});
+
+			// ORDER BUTTON
+			$(".bluebox-button-order").bind("click", function() {
+				$(".bluebox-alert-wrapper").fadeOut(250);
+
+				$(this).prop("disabled", true);
+				var write_new_address_status = function(arg) {
+					console.log(arg);
+					if(arg.success) {
+						$(".bluebox-order-data").slideUp(function() {
+							$(".bluebox-alert-success").fadeIn(250);
+							$(".bluebox-alert-danger").fadeOut(250);
+						});
+					} else {
+						$(".bluebox-alert-success").fadeOut(250);
+						$(".bluebox-alert-danger").fadeIn(250);
+						$(this).prop("disabled", false);
+					}
+				};
+
+				write_new_address_status({success: false});
+				return false;
+			});
+
+			// 
+		});
+	</script>
+</head>
+<body>
+	<div class="bluebox-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">LOGO</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a>Hello, Newman</a></li>
+					<li><a href="#">Account</a></li>
+					<li><a href="#">Logout</a></li>
+            	</ul>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav bluebox-nav-lowermenu">
+					<li><a>I am ready to...</a></li>
+					<li><a href="#">ORDER</a></li>
+					<li><a href="#">RECEIVE</a></li>
+					<li><a href="#">SHIP</a></li>
+					<li><a href="#">RETRIEVE</a></li>
+				</ul>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav bluebox-nav-cue">
+					<li><a>&nbsp;</a></li>
+					<li><a>&nbsp;</a></li>
+					<li><a>&nbsp;</a></li>
+					<li><a>&nbsp;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<form class="bluebox-order-data" method="post">
+					<div class="form-group">
+						<label for="bluebox-numboxes">Number of Boxes</label>
+						<select name="bluebox-numboxes" class="bluebox-numboxes selectpicker">
+						    <option value="1" selected="selected">1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						    <option value="4">4</option>
+						    <option value="5">5</option>
+						    <option value="6">6</option>
+						    <option value="7">7</option>
+						    <option value="8">8</option>
+						    <option value="9">9</option>
+						    <option value="10">10</option>
+					    </select>
+					</div>
+					<div class="form-group">
+						<label for="bluebox-shipto">Ship To</label>
+						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+						    <option value="0" selected="selected">Home</option>
+						    <option value="1">Office (me)</option>
+						    <option value="2">Wife's Office</option>
+						    <option value="9999">+ New Address</option>
+					    </select>
+					</div>
+					<div class="bluebox-newaddress">
+						<div class="form-group">
+		        			<label for="bluebox-street-1">Street Address 1</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-street-2">Street Address 2</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-city">City</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-city" placeholder="required" required/>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-state">State</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-state" placeholder="required" required/>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-zip">ZIP</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-zip" placeholder="required" required/>
+								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">ORDER</a></p>
+					</div>
+				</form>
+				<div class="bluebox-alert-success bluebox-alert-wrapper">
+					<div class="bluebox-alert alert alert-success">
+						<p><strong>SUCCESS!</strong></p>
+						<div>Your new address has been added and your order placed.</div>
+						<br/>
+						<div>Click <a href="#">here</a> to return to Home page.</div>
+					</div>
+					</div>
+					<div class="bluebox-alert-danger bluebox-alert-wrapper">
+						<div class="bluebox-alert alert alert-danger">
+						<p><strong>FAIL!</strong></p>
+						<div>There was an error. Please try again.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

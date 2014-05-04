@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlueBox</title>
+	<meta></meta>
+	
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'/>
+	<link href="ext/wijmo/css/jquery.wijmo-open.3.20141.34.css" rel="stylesheet" type="text/css"/>
+	<script src="ext/wijmo/js/jquery.wijmo-open.all.3.20141.34.min.js"></script>
+	<link href="ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="ext/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	<script src="ext/bootstrap/js/bootstrap.min.js"></script>
+
+	<style>
+		* {
+			text-shadow     : none;
+		}
+
+		html, body {
+			padding         : 0;
+			margin          : 0 auto;
+			font-family     : 'Open Sans', sans-serif;
+		}
+
+		body {
+			padding-top     : 70px;
+		}
+
+		.bluebox-font {
+			font-family     : "Roboto Condensed", sans-serif;
+		}
+
+		.bluebox-header {
+			font-size       : 2em;
+		}
+
+		.bluebox-header nav, .bluebox-footer, .bluebox-name {
+			font-weight     : bold;
+		}
+
+		.bluebox-footer {
+			text-align      : center;
+			font-size       : 1.25em;
+		}
+
+		.jumbotron {
+		    padding-bottom  : 12px;
+		    padding-top     : 12px;
+		}
+
+		.bluebox-lightblue {
+			color           : #2162A7;
+		}
+
+		.bluebox-darkblue {
+			color           : #092643;
+		}
+
+		.bluebox-nav-quad {
+			width           : 800px;
+			margin          : auto;
+		}
+
+		.bluebox-nav-quad-element {
+			height          : 200px;
+		}
+
+		.border-right-bottom, .border-left-bottom {
+			border-bottom   : 1px solid #2610A5;
+		}
+
+		.border-right-top, .border-left-top {
+			border-top      : 1px solid #2610A5;
+		}
+
+		.border-right-bottom, .border-right-top {
+			border-right    : 1px solid #2610A5;
+		}
+
+		.border-left-bottom, .border-left-top {
+			border-left     : 1px solid #2610A5;
+		}
+
+		.bluebox-nav-quad {
+			margin          : 1em auto;
+		}
+
+		.bluebox-inline {
+			display         : inline;
+		}
+	</style>
+
+	<script></script>
+</head>
+<body>
+	<div class="bluebox-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">ORDER</a></li>
+					<li><a href="#">RECEIVE</a></li>
+					<li><a href="#">STORE</a></li>
+					<li><a href="#">RETRIEVE</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Account</a></li>
+            	</ul>
+			</div>
+		</div>
+	</div>
+	
+    <div class="container">
+	    <div class="jumbotron">
+	        <h1>Welcome to <span class="bluebox-font"><span class="bluebox-darkblue bluebox-name">BLUE</span><span class="bluebox-lightblue bluebox-name">BOX</span></span>!</h1>
+	        <p>Blah blah blah blah blah blah blah.</p>
+	        <p><a class="btn btn-primary btn-lg" role="button">Get Moving &raquo;</a></p>
+	    </div>
+	</div>
+
+	<div class="container bluebox-nav-quad bluebox-font">
+		<div class="row">
+			<div class="bluebox-nav-quad-element col-sm-5 col-md-6 border-right-bottom">I want to <h3 class="bluebox-inline">ORDER</h3></div>
+			<div class="bluebox-nav-quad-element col-sm-5 col-md-6 border-left-bottom">I want to <h3 class="bluebox-inline">RECEIVE</h3></div>
+		</div>
+		<div class="row">
+			<div class="bluebox-nav-quad-element col-sm-5 col-md-6 border-right-top">I want to <h3 class="bluebox-inline">STORE</h3></div>
+			<div class="bluebox-nav-quad-element col-sm-5 col-md-6 border-left-top">I want to <h3 class="bluebox-inline">RETRIEVE</h3></div>
+		</div>
+    </div>
+
+	<div class="bluebox-footer">&copy; 2014 The Visual Suspects</div>
+</body>
+</html>
