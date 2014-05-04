@@ -78,6 +78,7 @@ $(document).ready(function() {
 				$(".bluebox-order-data").slideUp(function() {
 					$(".bluebox-alert-success").fadeIn(250);
 					$(".bluebox-alert-danger").fadeOut(250);
+					$(".bluebox-button-order").fadeOut();
 				});
 			} else {
 				$(".bluebox-alert-success").fadeOut(250);
@@ -95,7 +96,6 @@ $(document).ready(function() {
 	$("input[name=bluebox-shipto-name], input[name=bluebox-street-1], input[name=bluebox-city], select[name=bluebox-state] option:selected, input[name=bluebox-zip]").blur(function() {
 	    if($("input[name=bluebox-shipto-name]").val() !== "" && $("input[name=bluebox-street-1]").val() !== "" && $("input[name=bluebox-city]").val() !== "" && $("select[name=bluebox-state] option:selected").val() !== "" && $("input[name=bluebox-zip]").val() !== "") {
 	    	var __json_order_data = get_shipto();
-	    	console.log(__json_order_data);
 	        $(".bluebox-button-order").removeClass("btn-disabled").removeAttr("disabled");
 	    } else {
 	        $(".bluebox-button-order").addClass("btn-disabled").prop("disabled", "disabled");

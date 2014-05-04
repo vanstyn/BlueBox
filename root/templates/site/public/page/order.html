@@ -25,26 +25,20 @@
 					<div class="form-group">
 						<label for="bluebox-shipto">Sent to</label>
 						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+              
+              <option value="" selected="selected">- Select Ship-To address</option>
 
-
-                [% SET first_seen = 0 %]
                 [% IF account %]
                   [% FOREACH loc IN account.locations_list %]
-    						    <option value="[% loc.id %]" [%- IF first_seen == 0 -%]selected="selected"[%- END -%]>
-                      [% loc.name %]
-                    </option>
+    						    <option value="[% loc.id %]">[% loc.name %]</option>
                     [% SET first_seen = 1 %]
                   [% END %]
 
-    						    <option value="9999" [%- IF first_seen == 0 -%]selected="selected"[%- END -%]>
-                      + New Address
-                    </option>
+    						    <option value="+">+ New Address</option>
                 [% ELSE %]
-  						    <option value="9999" [%- IF first_seen == 0 -%]selected="selected"[%- END -%]>
-                    + New Address
-                  </option>
+  						    <option value="+">+ New Address</option>
                 [% END %]
-
+                
 					    </select>
 					</div>
 					<div class="bluebox-newaddress">
@@ -135,12 +129,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<p class="center">
-							<button class="btn-disabled bluebox-orange bluebox-button-order btn btn-primary btn-lg" disabled="disabled">SEND THEM</button>
-						</p>
-					</div>
+
 				</form>
+				<div class="form-group">
+					<p class="center">
+						<button class="btn-disabled bluebox-orange bluebox-button-order btn btn-primary btn-lg" disabled="disabled">SEND THEM</button>
+					</p>
+				</div>
 				<div class="bluebox-alert-success bluebox-alert-wrapper">
 					<div class="bluebox-alert alert alert-success">
 						<p><strong>Alright!</strong></p>
