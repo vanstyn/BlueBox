@@ -75,6 +75,21 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bKMZGsM8iZsjA2/4BYwUow
 
 
+sub box_data {
+  my $self = shift;
+  return {
+    boxName   => $self->get_column('name'),
+    boxItems  => $self->items_data
+  };
+}
+
+sub items_data {
+  my $self = shift;
+  return [ map { $_->get_column('name') } $self->items->all ];
+}
+
+
+
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

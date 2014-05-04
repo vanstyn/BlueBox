@@ -48,12 +48,23 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-03 20:17:09
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c/CClZLMRcuYr016uLlxmQ
 
+use JSON qw(encode_json);
+use RapidApp::Include qw(sugar perlutil);
 
 sub locations_list {
   my $self = shift;
   return [ map { { $_->get_columns } } $self->locations->all ];
 }
 
+sub boxes_list {
+  my $self = shift;
+  return [ map { $_->box_data } $self->boxes->all ];
+}
+
+sub boxes_list_json {
+  my $self = shift;
+  return try{ encode_json( $self->boxes_list ) } || '[]';
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

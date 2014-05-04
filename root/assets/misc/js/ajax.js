@@ -18,12 +18,22 @@ function orderAjax(opt) {
 }
 
 function shipAjax(opt) {
-  // Dummy
-  
-  
-  console.dir(opt);
-  
-  
+
+
+  Ext.Ajax.request({
+		url: '/api/ship',
+		params: {
+		  box_json: Ext.encode(opt.data),
+		},
+		success: function(response,options) {
+      opt.callback({success: true});
+    },
+		failure: function(response,options) {
+      opt.callback({success: false});
+    }
+    
+  });
+
   opt.callback({success: true });
 }
 

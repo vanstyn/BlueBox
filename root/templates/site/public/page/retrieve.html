@@ -25,12 +25,32 @@
 				</div>
 				<div class="form-group">
 					<label for="bluebox-shipto">Sent to</label>
+          <select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+          
+          [% IF account %]
+            [% FOREACH loc IN account.locations_list %]
+					    <option value="[% loc.id %]">[% loc.name %]</option>
+              [% SET first_seen = 1 %]
+            [% END %]
+
+					    <option value="+">+ New Address</option>
+          [% ELSE %]
+				    <option value="+">+ New Address</option>
+          [% END %]
+          
+        </select>
+          
+          <!--
+          
 					<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
 					    <option value="0" selected="selected">Home</option>
 					    <option value="1">Office (me)</option>
 					    <option value="2">Wife's Office</option>
 					    <option value="+">+ New Address</option>
 				    </select>
+            
+          -->
+            
 					<div class="bluebox-newaddress">
 						<div class="form-group">
 		        			<label for="bluebox-street-1">Street Address 1</label>

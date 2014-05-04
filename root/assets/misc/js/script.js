@@ -1,9 +1,4 @@
-var __arrayRetrieve = [
-	{boxName: "Sweaters", boxItems: ["Cardigan", "Argyle", "Cosby", "Cashmere", "Turtleneck", "V-neck", "Sweater Vest"]}
-,	{boxName: "Shirts", boxItems: ["KISS tee", "Green long-sleeve", "flannel", "I'm With Stupid"]}
-,	{boxName: "Pants", boxItems: ["khakis", "neon beach pants"]}
-,	{boxName: "Winter", boxItems: ["coats", "sweat shirts"]}
-];
+
 
 // ENTER ITEM NAME
 function __inputItemBlur() {
