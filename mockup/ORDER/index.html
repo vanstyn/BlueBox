@@ -25,7 +25,7 @@
 		}
 
 		body {
-			padding-top     : 130px;
+			padding-top     : 69px;
 		}
 
 		.container {
@@ -36,8 +36,11 @@
 			font-family     : "Roboto Condensed", sans-serif;
 		}
 
-		.bluebox-header {
+		.bluebox-header, .bluebox-not-header {
 			font-size       : 2em;
+		}
+
+		.bluebox-header {
 			background      : none repeat scroll 0 0 #092643;
 		}
 
@@ -93,7 +96,7 @@
 		}
 
 		.nav.navbar-nav.bluebox-nav-lowermenu li {
-			width           : 175px;
+			width           : 190px;
 		}
 
 		.nav.navbar-nav.bluebox-nav-lowermenu li:first-child {
@@ -112,6 +115,61 @@
 		.bluebox-newaddress, .bluebox-alert-wrapper {
 			display         : none;
 		}
+
+		.bluebox-header.navbar-default .navbar-nav > li > a {
+			color           : #FFF;
+		}
+
+		.bluebox-header.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+		    background-color: rgba(163,​ 63,​ 35,​ 1);
+		    color           : #FFF;
+		    text-decoration : none;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-actionable:hover, .bluebox-nav-lowermenu li.bluebox-actionable:focus {
+		    background-color: #2610A5;
+		    color           : #FFF;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable {
+		    background-color: #A33F23;
+		    color           : #FFF;
+		}
+
+		.navbar-default .navbar-nav > li > a.bluebox-logo {
+			background      : url("../imgs/icon_logo.svg") no-repeat top left transparent;
+			width           : 230px; 
+			height          : 66px;
+			padding         : 0;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-actionable a {
+			padding-left    : 38px;
+		}
+
+		.bluebox-order, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-order {
+			background      : url("../imgs/icon_order.svg") no-repeat left center transparent;
+		}
+
+		.bluebox-ship, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-ship {
+			background      : url("../imgs/icon_ship.svg") no-repeat left center transparent;
+		}
+
+		.bluebox-retrieve, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-retrieve {
+			background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-order:hover {
+			background      : url("../imgs/icon_order.svg") no-repeat left center #A33F23;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-ship:hover {
+			background      : url("../imgs/icon_ship.svg") no-repeat left center #A33F23;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-retrieve:hover {
+			background      : url("../imgs/icon_retrieve.svg") no-repeat left center #A33F23;
+		}
 	</style>
 
 	<script>
@@ -128,13 +186,18 @@
     			}
 			});
 
+			// NAV MENU
+			$(".bluebox-nav-lowermenu li").bind("click", function() {
+				$(this).addClass("bluebox-active").siblings().removeClass("bluebox-active");
+				return false;
+			});
+
 			// ORDER BUTTON
 			$(".bluebox-button-order").bind("click", function() {
 				$(".bluebox-alert-wrapper").fadeOut(250);
 
 				$(this).prop("disabled", true);
 				var write_new_address_status = function(arg) {
-					console.log(arg);
 					if(arg.success) {
 						$(".bluebox-order-data").slideUp(function() {
 							$(".bluebox-alert-success").fadeIn(250);
@@ -150,17 +213,15 @@
 				write_new_address_status({success: false});
 				return false;
 			});
-
-			// 
 		});
 	</script>
 </head>
 <body>
-	<div class="bluebox-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
+	<div class="bluebox-not-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
 		<div class="container">
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">LOGO</a></li>
+					<li><a href="#" class="bluebox-logo">&nbsp;</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a>Hello, Newman</a></li>
@@ -168,21 +229,16 @@
 					<li><a href="#">Logout</a></li>
             	</ul>
 			</div>
+		</div>
+	</div>
+	<div class="bluebox-header bluebox-bg navbar navbar-default bluebox-font">
+		<div class="container">
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav bluebox-nav-lowermenu">
 					<li><a>I am ready to...</a></li>
-					<li><a href="#">ORDER</a></li>
-					<li><a href="#">RECEIVE</a></li>
-					<li><a href="#">SHIP</a></li>
-					<li><a href="#">RETRIEVE</a></li>
-				</ul>
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav bluebox-nav-cue">
-					<li><a>&nbsp;</a></li>
-					<li><a>&nbsp;</a></li>
-					<li><a>&nbsp;</a></li>
-					<li><a>&nbsp;</a></li>
+					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="#">ORDER</a></li>
+					<li class="bluebox-actionable bluebox-ship"><a href="#">SHIP</a></li>
+					<li class="bluebox-actionable bluebox-retrieve"><a href="#">RETRIEVE</a></li>
 				</ul>
 			</div>
 		</div>
@@ -221,35 +277,30 @@
 		        			<label for="bluebox-street-1">Street Address 1</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
-								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
 							</div>
 						</div>
 						<div class="form-group">
 		        			<label for="bluebox-street-2">Street Address 2</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
-								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
 							</div>
 						</div>
 						<div class="form-group">
 		        			<label for="bluebox-city">City</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-city" placeholder="required" required/>
-								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
 							</div>
 						</div>
 						<div class="form-group">
 		        			<label for="bluebox-state">State</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-state" placeholder="required" required/>
-								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
 							</div>
 						</div>
 						<div class="form-group">
 		        			<label for="bluebox-zip">ZIP</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-zip" placeholder="required" required/>
-								<span class="input-group-addon danger"><span class="glyphicon glyphicon-ok"></span></span>
 							</div>
 						</div>
 					</div>
