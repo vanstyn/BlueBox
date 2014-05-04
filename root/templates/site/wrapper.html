@@ -1,5 +1,5 @@
-[%- SET 
-  username = c.user.get_from_storage.username 
+[%- SET
+  username = c.user.get_from_storage.username
   login_url = '/auth/login'
   logout_url = '/auth/logout'
   locations_list = account.locations_list
@@ -9,7 +9,7 @@
 <head>
 	<title>BlueBox</title>
 	<meta></meta>
-  
+
   <script src="/assets/extjs/current/adapter/ext/ext-base.js"></script>
   <script src="/assets/extjs/current/ext-all.js"></script>
 
@@ -26,27 +26,27 @@
 
 	<script src="/assets/local/misc/static/js/ajax.js"></script>
   <script src="/assets/local/misc/static/js/script.js"></script>
-  
+
 </head>
 <body>
 
 
 [% INCLUDE site/public/banner.html %]
-  
-  
+
+
 	<div class="bluebox-header bluebox-bg navbar navbar-default bluebox-font">
 		<div class="container">
 			<div class="navbar-collapse collapse">
-        
+
         [% IF username %]
   				<ul class="nav navbar-nav bluebox-nav-lowermenu">
-  					<li class="bluebox-red"><a>I am ready to...</a></li>
+  					<li class="bluebox-red"><a>I am ready to</a></li>
   					<li class="bluebox-actionable [%- IF active_section == 'order' -%]bluebox-active [%- END -%]bluebox-order"><a href="/order">ORDER</a></li>
   					<li class="bluebox-actionable [%- IF active_section == 'ship' -%]bluebox-active [%- END -%]bluebox-ship"><a href="/ship">SHIP</a></li>
   					<li class="bluebox-actionable [%- IF active_section == 'retrieve' -%]bluebox-active [%- END -%]bluebox-retrieve"><a href="/retrieve">RETRIEVE</a></li>
   				</ul>
         [% END %]
-        
+
 			</div>
 		</div>
 	</div>
