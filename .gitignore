@@ -1,2 +1,6 @@
 *.DS_Store*
 rapidapp_coreschema.db
+
+bluebox.db
+
+rapidapp_coreschema.db

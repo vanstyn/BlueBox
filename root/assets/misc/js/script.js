@@ -18,6 +18,18 @@ function __inputItemBlur() {
 	});
 }
 
+function get_shipto() {
+	return {
+		numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])
+	,   shipToName : ($(".bluebox-shipto option:selected").text() == "+ New Address") ? $("input[name=bluebox-shipto-name]").val() : $(".bluebox-shipto option:selected").text()
+	,   streetAddr1: $("input[name=bluebox-street-1]").val()
+	,   streetAddr2: $("input[name=bluebox-street-2]").val()
+	,   city       : $("input[name=bluebox-city]").val()
+	,   state      : $("select[name=bluebox-state] option:selected").val()
+	,   zipCode    : $("input[name=bluebox-zip]").val()
+	}	
+}
+
 $(document).ready(function() {
     $(".selectpicker").selectpicker();
 
@@ -28,10 +40,17 @@ $(document).ready(function() {
 		$(".bluebox-feedback-numboxes").text($(".bluebox-numboxes option:selected").text());
 		$(".bluebox-feedback-shipto").text($(".bluebox-shipto option:selected").text());
 
-        if(valueSelected == "9999") {
+        if(valueSelected == "+") {
          	$(".bluebox-newaddress").css("opacity", 0).slideDown(500).animate({opacity: 1}, {queue: false, duration: 250});
+         	$(".bluebox-button-order").addClass("btn-disabled").prop("disabled", "disabled");
         } else {
          	$(".bluebox-newaddress").css("opacity", 1).slideUp(500).animate({opacity: 0}, {queue: false, duration: 250});
+         	if(valueSelected !== "") {
+         		$(".bluebox-button-order").removeClass("btn-disabled").removeAttr("disabled");
+         		$(this).removeClass("btn-disabled").removeAttr("disabled");
+         	} else {
+         		$(".bluebox-button-order").addClass("btn-disabled").prop("disabled", "disabled");
+			}
         }
     });
 
@@ -50,15 +69,7 @@ $(document).ready(function() {
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
 		// Get Box items data
-		var __json_order_data = {
-		    numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])
-		,   shipToName : $(".bluebox-shipto option:selected").text()
-		,   streetAddr1: $("input[name=bluebox-street-1]").val()
-		,   streetAddr2: $("input[name=bluebox-street-2]").val()
-		,   city       : $("input[name=bluebox-city]").val()
-		,   state      : $("select[name=bluebox-state] option:selected").val()
-		,   zipCode    : $("input[name=bluebox-zip]").val()
-  		};
+		var __json_order_data = get_shipto();
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -79,6 +90,16 @@ $(document).ready(function() {
 			callback: write_new_address_status
 		,	data    : __json_order_data
 		});
+	});
+
+	$("input[name=bluebox-shipto-name], input[name=bluebox-street-1], input[name=bluebox-city], select[name=bluebox-state] option:selected, input[name=bluebox-zip]").blur(function() {
+	    if($("input[name=bluebox-shipto-name]").val() !== "" && $("input[name=bluebox-street-1]").val() !== "" && $("input[name=bluebox-city]").val() !== "" && $("select[name=bluebox-state] option:selected").val() !== "" && $("input[name=bluebox-zip]").val() !== "") {
+	    	var __json_order_data = get_shipto();
+	    	console.log(__json_order_data);
+	        $(".bluebox-button-order").removeClass("btn-disabled").removeAttr("disabled");
+	    } else {
+	        $(".bluebox-button-order").addClass("btn-disabled").prop("disabled", "disabled");
+	    }
 	});
 
     // SHIP BUTTON
@@ -178,7 +199,6 @@ $(document).ready(function() {
 
 	// ADD ITEM BUTTON
     $(".bluebox-button-additem").click(function(e){
-//        e.preventDefault();
         var __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
         $(".bluebox-itemlist button").before(__newItem);
 		__inputItemBlur();

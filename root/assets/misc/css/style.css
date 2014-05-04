@@ -320,7 +320,12 @@ a.bluebox-orange {
 }
 
 .bluebox-feedback {
+
   /* font-size        : 1.2em; */
   color            : #A33F23;
   font-weight: bold;
+
+.bluebox-login-wrapper {
+
+
 }
