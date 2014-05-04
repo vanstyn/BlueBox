@@ -236,6 +236,30 @@ a.bluebox-orange {
 	color            : #A33F23;
 }
 
-.bluebox-login-wrapper {
-	
+/* HOME PAGE */
+.jumbotron-image {
+	width            : 700px;
+	margin           : auto;
+}
+
+.jumbotron-image img {
+	width            : 100%;
+}
+
+.container-copy {
+	width            : 700px;
+	margin           : auto;
+}
+
+.container-copy p {
+	font-weight      : bold;
+	font-style       : italic;
+}
+
+.jumbotron p {
+	margin-bottom    : 5px;
+}
+
+.container-copy ol {
+	font-size        : 18px;
 }
