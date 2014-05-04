@@ -1,3 +1,14 @@
+// ENTER ITEM NAME
+function __inputItemBlur() {
+	$("input[name=bluebox-item-description]").blur(function() {
+		__arrayItemList = [];
+		$("input[name=bluebox-item-description]").each(function() {
+			__arrayItemList.push($(this).val());
+		});
+		$(".bluebox-list-joined").text(__arrayItemList.join(", "));
+	});
+}
+
 $(document).ready(function() {
     $(".selectpicker").selectpicker();
 
@@ -22,12 +33,21 @@ $(document).ready(function() {
 
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
-    	$(".bluebox-alert-wrapper").fadeOut(250);
+		// Get Box items data
+		var order_data = {
+		    numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])
+		,   shipToName : $(".bluebox-shipto option:selected").text()
+		,   streetAddr1: $("input[name=bluebox-street-1]").val()
+		,   streetAddr2: $("input[name=bluebox-street-2]").val()
+		,   city       : $("input[name=bluebox-city]").val()
+		,   state      : $("select[name=bluebox-state] option:selected").val()
+		,   zipCode    : $("input[name=bluebox-zip]").val()
+    };
 
+    	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
 		var write_new_address_status = function(arg) {
 			if(arg.success) {
-				$().text();
 				$(".bluebox-order-data").slideUp(function() {
 					$(".bluebox-alert-success").fadeIn(250);
 					$(".bluebox-alert-danger").fadeOut(250);
@@ -37,39 +57,75 @@ $(document).ready(function() {
 				$(".bluebox-alert-danger").fadeIn(250);
 				$(this).prop("disabled", false);
 			}
-	     };
+	    };
+      
+      
+      Ext.Ajax.request({
+  			url: '/api/order',
+  			params: {
+  			  loc_json: Ext.encode(order_data),
+          qty: order_data.numBoxes
+  			},
+  			success: function(response,options) {
+          write_new_address_status({success: true});
+        },
+  			failure: function(response,options) {
+          write_new_address_status({success: false});
+        }
+        
+      });
+
+	});
+
+    // SHIP BUTTON
+    $(".bluebox-button-ship").bind("click", function() {
+		// Get Box items data
+		__item_descriptions = [];
+		$("input[name=bluebox-item-description]").each(function() {
+		    __item_descriptions.push($(this).val());
+		});
+		__json_ship_data = [
+		    {boxName : $("input[name=bluebox-boxname]").val()}
+		,   {boxValue: $("input[name=bluebox-value]").val()}
+		,   {boxItems: __item_descriptions.join(", ")}
+		];
+
+    	$(".bluebox-alert-wrapper").fadeOut(250);
+		$(this).prop("disabled", true);
+
+		var write_new_address_status = function(arg) {
+			if(arg.success) {
+				$(".bluebox-order-data").slideUp(function() {
+					$(".bluebox-alert-success").fadeIn(250);
+					$(".bluebox-alert-danger").fadeOut(250);
+				});
+			} else {
+				$(".bluebox-alert-success").fadeOut(250);
+				$(".bluebox-alert-danger").fadeIn(250);
+				$(this).prop("disabled", false);
+			}
+	    };
 
 		write_new_address_status({success: true});
 		return false;
 	});
 
-	// ADD ITEM BUTTON
-	$(".bluebox-button-additem").bind("click", function() {
-		$(this).prev().append('<input type="text" class="form-control" name="bluebox-boxitems" placeholder="required" required/>');
+	// ENTER BOX NAME
+	$("input[name=bluebox-boxname]").blur(function() {
+		$(".bluebox-feedback-boxname").text($(this).val());
 	});
+	__inputItemBlur();
 
-	//
-    var next = 1;
-    $(".bluebox-add-item").click(function(e){
+	// ADD ITEM BUTTON
+    $(".bluebox-button-additem").click(function(e){
         e.preventDefault();
-        var addto = ".bluebox-item-field" + next;
-        var addRemove = ".bluebox-item-field" + (next);
-        next = next + 1;
-        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-        var newInput = $(newIn);
-        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $(".bluebox-item-field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);  
-        
-            $('.remove-me').click(function(e){
-                e.preventDefault();
-                var fieldNum = this.id.charAt(this.id.length-1);
-                var fieldID = ".bluebox-item-field" + fieldNum;
-                $(this).remove();
-                $(fieldID).remove();
-            });
+        __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
+        $(".bluebox-itemlist:last").after(__newItem);
+		__inputItemBlur();
+		$("input[name=bluebox-item-description]:last").focus();
     });
+
+	if($("input[name=bluebox-boxname]").length > 0) {
+		$("input[name=bluebox-boxname]").focus();
+	}
 });

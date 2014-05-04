@@ -2,6 +2,10 @@ package BlueBox::Controller::Api::Order;
 use Moose;
 use namespace::autoclean;
 
+use strict;
+use warnings;
+use JSON qw(decode_json);
+
 use RapidApp::Include qw(sugar perlutil);
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -33,10 +37,7 @@ sub index :Path :Args(0) {
     my $Location = $self->get_location($c,$Account);
     
     my $params = $c->req->params;
-    
-    my $loc_id = $params->{location_id} || $self->get_new_location($c);
     my $qty = $params->{qty} or die "qty required";
-    
     my $dtf = $c->model('DB')->schema->storage->datetime_parser;
     
     my $Order = $c->model('DB::Order')->create({
@@ -72,10 +73,22 @@ sub get_location {
   }
   else {
     my $loc_json = $c->req->params->{loc_json} or die "No location info supplied";
-    my $loc = decode_json_uft8($loc_json);
-    $Location = $Rs->create({
-      %$loc,
-      account_id => $acc_id
+    my $loc = decode_json($loc_json);
+    
+    my %create = (
+      account_id  => $acc_id,
+      name        => $loc->{shipToName}
+    );
+    
+    $Location = $Rs->search_rs(\%create)->first || $Rs->create({
+      %create,
+      address => join(', ', 
+        $loc->{streetAddr1} || (),
+        $loc->{streetAddr2} || (),
+        $loc->{city} || (),
+        $loc->{state} || (),
+        $loc->{zipCode} || (),
+      )
     }) or die "Error creating new location";
   }
   
