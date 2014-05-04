@@ -201,10 +201,16 @@ $(document).ready(function() {
 	$(".bluebox-boxanditems input[type=checkbox]").each(function() {
 	    $(this).bind("change", function() {
 	        var __countChecked = $(".bluebox-boxanditems input[type=checkbox]:checked").length;
+	        var __arrayRetrieveBoxes = [];
+			$(".bluebox-boxanditems input[type=checkbox]:checked").each(function() {
+				__arrayRetrieveBoxes.push($(this).parent().text());
+			});
+
 	        if(__countChecked == 0) {
 	            $(".bluebox-button-retrieve").addClass("btn-disabled").attr("disabled", "disabled");
 	        } else {
 	            $(".bluebox-button-retrieve").removeClass("btn-disabled").removeAttr("disabled");
+	            $(".bluebox-feedback-receiveboxes").text(__arrayRetrieveBoxes.join(", "));
 	        }
 	    });
 	});
