@@ -1,4 +1,4 @@
-package BlueBox::Controller::Order;
+package BlueBox::Controller::Api::Order;
 use Moose;
 use namespace::autoclean;
 
@@ -30,7 +30,7 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     
     my $Account = $c->model('DB::Account')->current_Account or die "Not logged in.";
-    my $Location = $self->get_location($c,$Account)
+    my $Location = $self->get_location($c,$Account);
     
     my $params = $c->req->params;
     
@@ -44,7 +44,7 @@ sub index :Path :Args(0) {
       location_id => $Location->get_column('id'),
       qty         => $qty,
       ordered_on  => $dtf->format_datetime( &now_dt )
-    })->get_from_storage or die "Error creating order"
+    })->get_from_storage or die "Error creating order";
     
     # TODO: dispatch to a real view
     $c->res->content_type('application/json; charset=utf-8');
