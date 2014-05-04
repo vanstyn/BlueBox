@@ -171,7 +171,7 @@ $(document).ready(function() {
           data: __json_retrieve_data
         });
 
-			write_new_address_status({success: true});
+//			write_new_address_status({success: true});
 		});
 	});
 
