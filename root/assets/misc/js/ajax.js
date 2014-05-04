@@ -19,6 +19,11 @@ function orderAjax(opt) {
 
 function shipAjax(opt) {
   // Dummy
+  
+  
+  console.dir(opt);
+  
+  
   opt.callback({success: true });
 }
 
