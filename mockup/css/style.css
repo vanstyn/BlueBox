@@ -160,3 +160,11 @@ body {
     color            : #092643;
     background       : url("../imgs/bluebox-logo-small.png") no-repeat 0.1em 0.6em transparent;
 }
+
+.bluebox-itemrow {
+	margin-left      : 0;
+}
+
+.bluebox-itemlist-spacer {
+	font-size        : 8px;
+}
