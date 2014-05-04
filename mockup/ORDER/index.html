@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlueBox</title>
+	<meta></meta>
+
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Open+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css"/>
+	<link href="../ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../ext/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	<script src="../ext/bootstrap/js/bootstrap.min.js"></script>
+	<link href="../ext/bootstrap-select/bootstrap-select.css" rel="stylesheet" type="text/css"/>
+	<script src="../ext/bootstrap-select/bootstrap-select.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css">
+
+	<script src="../js/script.js"></script>
+
+</head>
+<body>
+
+	<div class="bluebox-not-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#" class="bluebox-logo">&nbsp;</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a>Hello, Newman</a></li>
+					<li><a href="#">Account</a></li>
+					<li><a href="#">Logout</a></li>
+            	</ul>
+			</div>
+		</div>
+	</div>
+	<div class="bluebox-header bluebox-bg navbar navbar-default bluebox-font">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav bluebox-nav-lowermenu">
+					<li><a>I am ready to...</a></li>
+					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="#">ORDER</a></li>
+					<li class="bluebox-actionable bluebox-ship"><a href="#">SHIP</a></li>
+					<li class="bluebox-actionable bluebox-retrieve"><a href="#">RETRIEVE</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<form class="bluebox-order-data" method="post">
+					<div class="form-group">
+						<label for="bluebox-numboxes">Number of Boxes</label>
+						<select name="bluebox-numboxes" class="bluebox-numboxes selectpicker">
+						    <option value="1" selected="selected">1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						    <option value="4">4</option>
+						    <option value="5">5</option>
+						    <option value="6">6</option>
+						    <option value="7">7</option>
+						    <option value="8">8</option>
+						    <option value="9">9</option>
+						    <option value="10">10</option>
+					    </select>
+					</div>
+					<div class="form-group">
+						<label for="bluebox-shipto">Ship To</label>
+						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+						    <option value="0" selected="selected">Home</option>
+						    <option value="1">Office (me)</option>
+						    <option value="2">Wife's Office</option>
+						    <option value="9999">+ New Address</option>
+					    </select>
+					</div>
+					<div class="bluebox-newaddress">
+						<div class="form-group">
+		        			<label for="bluebox-street-1">Street Address 1</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-street-2">Street Address 2</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-city">City</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-city" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-state">State</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-state" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-zip">ZIP</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-zip" placeholder="required" required/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">ORDER</a></p>
+					</div>
+				</form>
+				<div class="bluebox-alert-success bluebox-alert-wrapper">
+					<div class="bluebox-alert alert alert-success">
+						<p><strong>SUCCESS!</strong></p>
+						<div>Your new address has been added and your order placed.</div>
+						<br/>
+						<div>Click <a href="#">here</a> to return to Home page.</div>
+					</div>
+					</div>
+					<div class="bluebox-alert-danger bluebox-alert-wrapper">
+						<div class="bluebox-alert alert alert-danger">
+						<p><strong>FAIL!</strong></p>
+						<div>There was an error. Please try again.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
