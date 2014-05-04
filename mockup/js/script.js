@@ -48,15 +48,15 @@ $(document).ready(function() {
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
 		// Get Box items data
-		var __json_order_data = [
-		    {numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])}
-		,   {shipToName : $(".bluebox-shipto option:selected").text()}
-		,   {streetAddr1: $("input[name=bluebox-street-1]").val()}
-		,   {streetAddr2: $("input[name=bluebox-street-2]").val()}
-		,   {city       : $("input[name=bluebox-city]").val()}
-		,   {state      : $("select[name=bluebox-state] option:selected").val()}
-		,   {zipCode    : $("input[name=bluebox-zip]").val()}
-		];
+		var __json_order_data = {
+		    numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])
+		,   shipToName : $(".bluebox-shipto option:selected").text()
+		,   streetAddr1: $("input[name=bluebox-street-1]").val()
+		,   streetAddr2: $("input[name=bluebox-street-2]").val()
+		,   city       : $("input[name=bluebox-city]").val()
+		,   state      : $("select[name=bluebox-state] option:selected").val()
+		,   zipCode    : $("input[name=bluebox-zip]").val()
+  };
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -72,8 +72,13 @@ $(document).ready(function() {
 				$(this).prop("disabled", false);
 			}
 	    };
+      
+      orderAjax({
+        callback: write_new_address_status,
+        data: __json_order_data
+      });
 
-		write_new_address_status({success: true});
+		//write_new_address_status({success: true});
 	});
 
     // SHIP BUTTON
@@ -83,11 +88,11 @@ $(document).ready(function() {
 		$("input[name=bluebox-item-description]").each(function() {
 		    __item_descriptions.push($(this).val());
 		});
-		var __json_ship_data = [
-		    {boxName : $("input[name=bluebox-boxname]").val()}
-		,   {boxValue: $("input[name=bluebox-value]").val()}
-		,   {boxItems: __item_descriptions.join(", ")}
-		];
+		var __json_ship_data = {
+		    boxName : $("input[name=bluebox-boxname]").val()
+		,   boxValue: $("input[name=bluebox-value]").val()
+		,   boxItems: __item_descriptions.join(", ")
+    };
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -104,8 +109,13 @@ $(document).ready(function() {
 				$(this).prop("disabled", false);
 			}
 	    };
+      
+      shipAjax({
+        callback: write_new_address_status,
+        data: __json_ship_data
+      });
 
-		write_new_address_status({success: true});
+		//write_new_address_status({success: true});
 	});
 
     // RETRIEVE BUTTON 1
@@ -149,6 +159,17 @@ $(document).ready(function() {
 					$(this).prop("disabled", false);
 				}
 		    };
+        
+        // FIXME!
+        var __json_retrieve_data = {
+          foo: 'blah',
+          bar: 'baz'
+        };
+        
+        retrieveAjax({
+          callback: write_new_address_status,
+          data: __json_retrieve_data
+        });
 
 			write_new_address_status({success: true});
 		});
