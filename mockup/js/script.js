@@ -18,7 +18,6 @@ $(document).ready(function() {
     // NAV MENU
     $(".bluebox-nav-lowermenu li").bind("click", function() {
 		$(this).addClass("bluebox-active").siblings().removeClass("bluebox-active");
-		return false;
     });
 
     // ORDER BUTTON
@@ -43,9 +42,34 @@ $(document).ready(function() {
 		write_new_address_status({success: true});
 		return false;
 	});
-	
+
 	// ADD ITEM BUTTON
 	$(".bluebox-button-additem").bind("click", function() {
-		$(this).siblings().append('<input type="text" class="form-control" name="bluebox-boxitems" placeholder="required" required/><div>&nbsp</div>');
+		$(this).prev().append('<input type="text" class="form-control" name="bluebox-boxitems" placeholder="required" required/>');
 	});
+
+	//
+    var next = 1;
+    $(".bluebox-add-item").click(function(e){
+        e.preventDefault();
+        var addto = ".bluebox-item-field" + next;
+        var addRemove = ".bluebox-item-field" + (next);
+        next = next + 1;
+        var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+        var newInput = $(newIn);
+        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $(".bluebox-item-field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);  
+        
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = ".bluebox-item-field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    });
 });
