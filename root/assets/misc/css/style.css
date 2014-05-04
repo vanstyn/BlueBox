@@ -307,6 +307,10 @@ a.bluebox-orange {
   border: 0;
 }
 
+.jumbotron-image img {
+  width: 100%;
+}
+
 .bluebox-boxanditems-wrapper {
   margin: 0 0 30px;
 }
