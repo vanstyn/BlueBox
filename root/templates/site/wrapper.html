@@ -12,7 +12,11 @@
   
   <script>
   
-   var __arrayRetrieve = [%- account.boxes_list_json -%] ;
+  [% IF account %]
+     var __arrayRetrieve = [%- account.boxes_list_json -%] ;
+  [% ELSE %]
+    var __arrayRetrieve = [];
+  [% END %]
   
   /*
     var __arrayRetrieve = [
