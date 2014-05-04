@@ -120,6 +120,40 @@ $(document).ready(function() {
 		});
 	});
 
+    // RETRIEVE BUTTON 2
+    $(".bluebox-button-send").bind("click", function() {
+		$(".bluebox-retrieve-data:last").fadeOut(250, function() {
+			// Get Box items data
+//			var __item_descriptions = [];
+//			$("input[name=bluebox-item-description]").each(function() {
+//			    __item_descriptions.push($(this).val());
+//			});
+//			var __json_ship_data = [
+//			    {boxName : $("input[name=bluebox-boxname]").val()}
+//			,   {boxValue: $("input[name=bluebox-value]").val()}
+//			,   {boxItems: __item_descriptions.join(", ")}
+//			];
+
+	    	$(".bluebox-alert-wrapper").fadeOut(250);
+			$(this).prop("disabled", true);
+
+			var write_new_address_status = function(arg) {
+				if(arg.success) {
+					$(".bluebox-order-data").slideUp(function() {
+						$(".bluebox-alert-success").fadeIn(250);
+						$(".bluebox-alert-danger").fadeOut(250);
+					});
+				} else {
+					$(".bluebox-alert-success").fadeOut(250);
+					$(".bluebox-alert-danger").fadeIn(250);
+					$(this).prop("disabled", false);
+				}
+		    };
+
+			write_new_address_status({success: true});
+		});
+	});
+
 	// ENTER BOX NAME
 	$("input[name=bluebox-boxname]").blur(function() {
 		$(".bluebox-feedback-boxname").text($(this).val());

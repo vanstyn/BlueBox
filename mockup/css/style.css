@@ -194,7 +194,7 @@ body {
 	text-align       : center;
 }
 
-.bluebox-retrieve-data:first-child .form-group:first-child {
+.bluebox-retrieve-data .form-group:first-child {
 	border-bottom    : 2px solid #CCC;
 }
 
@@ -208,6 +208,17 @@ body {
 
 .bluebox-red * {
 	color            : #7C2B18;
+}
+
+div.bluebox-orange {
+	color            : #A33F23;
+	font-weight      : bold;
+	font-size        : 1.3em;
+}
+
+a.bluebox-orange {
+	color            : #FFF;
+	background-color : #A33F23;
 }
 
 .btn-primary.bluebox-orange {
