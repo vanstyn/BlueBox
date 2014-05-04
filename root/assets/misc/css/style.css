@@ -96,7 +96,7 @@ body {
   display         : block;
 }
 
-.bluebox-newaddress, .bluebox-alert-wrapper {
+.bluebox-newaddress, .bluebox-alert-wrapper, .bluebox-hidden {
   display         : none;
 }
 
@@ -202,14 +202,36 @@ body {
 	text-align       : center;
 }
 
-input[type="text"] {
-  	box-sizing       : border-box;// Makes inputs behave like true block-level elements
+.input-group .form-control {
+  	width            : 370px;
 }
 
 .bluebox-red * {
 	color            : #7C2B18;
 }
 
+div.bluebox-orange {
+	color            : #A33F23;
+	font-weight      : bold;
+	font-size        : 1.3em;
+}
+
+a.bluebox-orange {
+	color            : #FFF;
+	background-color : #A33F23;
+}
+
+.btn-primary.bluebox-orange {
+	background-color : #A33F23;
+	background-image : none;
+	border-color     : #7C2B18;
+}
+
 .bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
 	width            : 100%;
+}
+
+.bluebox-feedback {
+	font-size        : 1.2em;
+	color            : #A33F23;
 }

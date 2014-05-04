@@ -1,7 +1,14 @@
+var __arrayRetrieve = [
+	{boxName: "Sweaters", boxItems: ["Cardigan", "Argyle", "Cosby", "Cashmere", "Turtleneck", "V-neck", "Sweater Vest"]}
+,	{boxName: "Shirts", boxItems: ["KISS tee", "Green long-sleeve", "flannel", "I'm With Stupid"]}
+,	{boxName: "Pants", boxItems: ["khakis", "neon beach pants"]}
+,	{boxName: "Winter", boxItems: ["coats", "sweat shirts"]}
+];
+
 // ENTER ITEM NAME
 function __inputItemBlur() {
 	$("input[name=bluebox-item-description]").blur(function() {
-		__arrayItemList = [];
+		var __arrayItemList = [];
 		$("input[name=bluebox-item-description]").each(function() {
 			__arrayItemList.push($(this).val());
 		});
@@ -25,8 +32,8 @@ $(document).ready(function() {
          	$(".bluebox-newaddress").css("opacity", 1).slideUp(500).animate({opacity: 0}, {queue: false, duration: 250});
         }
     });
-    
-  	// NUMBER OF BOXES
+
+	// NUMBER OF BOXES
     $(".bluebox-numboxes").bind("change", function(e, ui) {
     	var optionSelected = $("option:selected", this);
         var valueSelected = this.value;
@@ -41,7 +48,7 @@ $(document).ready(function() {
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
 		// Get Box items data
-		var order_data = {
+		var __json_order_data = {
 		    numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])
 		,   shipToName : $(".bluebox-shipto option:selected").text()
 		,   streetAddr1: $("input[name=bluebox-street-1]").val()
@@ -49,7 +56,7 @@ $(document).ready(function() {
 		,   city       : $("input[name=bluebox-city]").val()
 		,   state      : $("select[name=bluebox-state] option:selected").val()
 		,   zipCode    : $("input[name=bluebox-zip]").val()
-    };
+  };
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -66,36 +73,26 @@ $(document).ready(function() {
 			}
 	    };
       
-      
-      Ext.Ajax.request({
-  			url: '/api/order',
-  			params: {
-  			  loc_json: Ext.encode(order_data),
-          qty: order_data.numBoxes
-  			},
-  			success: function(response,options) {
-          write_new_address_status({success: true});
-        },
-  			failure: function(response,options) {
-          write_new_address_status({success: false});
-        }
-        
+      orderAjax({
+        callback: write_new_address_status,
+        data: __json_order_data
       });
 
+		//write_new_address_status({success: true});
 	});
 
     // SHIP BUTTON
     $(".bluebox-button-ship").bind("click", function() {
 		// Get Box items data
-		__item_descriptions = [];
+		var __item_descriptions = [];
 		$("input[name=bluebox-item-description]").each(function() {
 		    __item_descriptions.push($(this).val());
 		});
-		__json_ship_data = [
-		    {boxName : $("input[name=bluebox-boxname]").val()}
-		,   {boxValue: $("input[name=bluebox-value]").val()}
-		,   {boxItems: __item_descriptions.join(", ")}
-		];
+		var __json_ship_data = {
+		    boxName : $("input[name=bluebox-boxname]").val()
+		,   boxValue: $("input[name=bluebox-value]").val()
+		,   boxItems: __item_descriptions.join(", ")
+    };
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -112,9 +109,70 @@ $(document).ready(function() {
 				$(this).prop("disabled", false);
 			}
 	    };
+      
+      shipAjax({
+        callback: write_new_address_status,
+        data: __json_ship_data
+      });
 
-		write_new_address_status({success: true});
-		return false;
+		//write_new_address_status({success: true});
+	});
+
+    // RETRIEVE BUTTON 1
+    $(".bluebox-button-retrieve").bind("click", function() {
+		$(".bluebox-retrieve-data:first").fadeOut(250, function() {
+		    $(".bluebox-retrieve-data:last").fadeIn(250);
+			var __arrayRetrieve = [];
+			$(".bluebox-boxanditems .bluebox-boxanditems-checkbox-wrapper input[type=checkbox]:checked").each(function() {
+			    __arrayRetrieve.push($(this).parent().text());
+			});
+			$(".bluebox-receiveboxes").text(__arrayRetrieve.join(", "));
+		});
+	});
+
+    // RETRIEVE BUTTON 2
+    $(".bluebox-button-send").bind("click", function() {
+		$(".bluebox-retrieve-data:last").fadeOut(250, function() {
+			// Get Box items data
+//			var __item_descriptions = [];
+//			$("input[name=bluebox-item-description]").each(function() {
+//			    __item_descriptions.push($(this).val());
+//			});
+//			var __json_ship_data = [
+//			    {boxName : $("input[name=bluebox-boxname]").val()}
+//			,   {boxValue: $("input[name=bluebox-value]").val()}
+//			,   {boxItems: __item_descriptions.join(", ")}
+//			];
+
+	    	$(".bluebox-alert-wrapper").fadeOut(250);
+			$(this).prop("disabled", true);
+
+			var write_new_address_status = function(arg) {
+				if(arg.success) {
+					$(".bluebox-order-data").slideUp(function() {
+						$(".bluebox-alert-success").fadeIn(250);
+						$(".bluebox-alert-danger").fadeOut(250);
+					});
+				} else {
+					$(".bluebox-alert-success").fadeOut(250);
+					$(".bluebox-alert-danger").fadeIn(250);
+					$(this).prop("disabled", false);
+				}
+		    };
+        
+        // FIXME!
+        var __json_retrieve_data = {
+          foo: 'blah',
+          bar: 'baz'
+        };
+        
+        retrieveAjax({
+          callback: write_new_address_status,
+          data: __json_retrieve_data
+        });
+
+			write_new_address_status({success: true});
+		});
 	});
 
 	// ENTER BOX NAME
@@ -126,21 +184,33 @@ $(document).ready(function() {
 	// ADD ITEM BUTTON
     $(".bluebox-button-additem").click(function(e){
         e.preventDefault();
-        __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
+        var __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
         $(".bluebox-itemlist:last").after(__newItem);
 		__inputItemBlur();
 		$("input[name=bluebox-item-description]:last").focus();
     });
-    
-  	// INITIALIZE BOXES & ITEMS
-  	for(var item in __arrayRetrieve) {
-  	    if(__arrayRetrieve.hasOwnProperty(item)) {
-  	        __currentBox = $('<div class="bluebox-boxanditems-checkbox-wrapper checkbox"><div class="bluebox-boxanditems-wrapper"><div class="bluebox-boxanditems-boxname"><label class="bluebox-font"><input type="checkbox"/>' + __arrayRetrieve[item].boxName + '</label></div><div class="bluebox-boxanditems-items"><span>' + __arrayRetrieve[item].boxItems.join(", ") + '</span></div></div></div>');
-  	        $(".bluebox-boxanditems").append(__currentBox);
-  	    }
-  	}
+
+	// INITIALIZE BOXES & ITEMS
+	for(var item in __arrayRetrieve) {
+	    if(__arrayRetrieve.hasOwnProperty(item)) {
+	        var __currentBox = $('<div class="bluebox-boxanditems-checkbox-wrapper checkbox"><div class="bluebox-boxanditems-wrapper"><div class="bluebox-boxanditems-boxname"><label class="bluebox-font"><input type="checkbox"/>' + __arrayRetrieve[item].boxName + '</label></div><div class="bluebox-boxanditems-items"><span>' + __arrayRetrieve[item].boxItems.join(", ") + '</span></div></div></div>');
+	        $(".bluebox-boxanditems").append(__currentBox);
+	    }
+	}
 
 	if($("input[name=bluebox-boxname]").length > 0) {
 		$("input[name=bluebox-boxname]").focus();
 	}
+
+	// RETRIEVE
+	$(".bluebox-boxanditems input[type=checkbox]").each(function() {
+	    $(this).bind("change", function() {
+	        var __countChecked = $(".bluebox-boxanditems input[type=checkbox]:checked").length;
+	        if(__countChecked == 0) {
+	            $(".bluebox-button-retrieve").addClass("btn-disabled").attr("disabled", "disabled");
+	        } else {
+	            $(".bluebox-button-retrieve").removeClass("btn-disabled").removeAttr("disabled");
+	        }
+	    });
+	});
 });
