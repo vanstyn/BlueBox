@@ -1,3 +1,8 @@
+[%- SET 
+  username = c.user.get_from_storage.username 
+  login_url = '/auth/login'
+  logout_url = '/auth/logout'
+-%]
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,12 +35,16 @@
 	<div class="bluebox-header bluebox-bg navbar navbar-default bluebox-font">
 		<div class="container">
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav bluebox-nav-lowermenu">
-					<li><a>I am ready to...</a></li>
-					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="/order">ORDER</a></li>
-					<li class="bluebox-actionable bluebox-ship"><a href="/ship">SHIP</a></li>
-					<li class="bluebox-actionable bluebox-retrieve"><a href="/retrieve">RETRIEVE</a></li>
-				</ul>
+        
+        [% IF username %]
+  				<ul class="nav navbar-nav bluebox-nav-lowermenu">
+  					<li><a>I am ready to...</a></li>
+  					<li class="bluebox-actionable bluebox-active bluebox-order"><a href="/order">ORDER</a></li>
+  					<li class="bluebox-actionable bluebox-ship"><a href="/ship">SHIP</a></li>
+  					<li class="bluebox-actionable bluebox-retrieve"><a href="/retrieve">RETRIEVE</a></li>
+  				</ul>
+        [% END %]
+        
 			</div>
 		</div>
 	</div>
