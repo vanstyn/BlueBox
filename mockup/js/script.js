@@ -10,7 +10,9 @@ function __inputItemBlur() {
 	$("input[name=bluebox-item-description]").blur(function() {
 		var __arrayItemList = [];
 		$("input[name=bluebox-item-description]").each(function() {
-			__arrayItemList.push($(this).val());
+			if($(this).val().length > 0) {
+				__arrayItemList.push($(this).val());
+			}
 		});
 		$(".bluebox-list-joined").text(__arrayItemList.join(", "));
 	});
@@ -56,7 +58,7 @@ $(document).ready(function() {
 		,   city       : $("input[name=bluebox-city]").val()
 		,   state      : $("select[name=bluebox-state] option:selected").val()
 		,   zipCode    : $("input[name=bluebox-zip]").val()
-  };
+  		};
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -73,12 +75,10 @@ $(document).ready(function() {
 			}
 	    };
       
-      orderAjax({
-        callback: write_new_address_status,
-        data: __json_order_data
-      });
-
-		//write_new_address_status({success: true});
+		orderAjax({
+			callback: write_new_address_status
+		,	data    : __json_order_data
+		});
 	});
 
     // SHIP BUTTON
@@ -91,8 +91,8 @@ $(document).ready(function() {
 		var __json_ship_data = {
 		    boxName : $("input[name=bluebox-boxname]").val()
 		,   boxValue: $("input[name=bluebox-value]").val()
-		,   boxItems: __item_descriptions.join(", ")
-    };
+		,   boxItems: __item_descriptions
+    	};
 
     	$(".bluebox-alert-wrapper").fadeOut(250);
 		$(this).prop("disabled", true);
@@ -110,12 +110,10 @@ $(document).ready(function() {
 			}
 	    };
       
-      shipAjax({
-        callback: write_new_address_status,
-        data: __json_ship_data
-      });
-
-		//write_new_address_status({success: true});
+      	shipAjax({
+        	callback: write_new_address_status
+        ,	data    : __json_ship_data
+      	});
 	});
 
     // RETRIEVE BUTTON 1
@@ -134,22 +132,21 @@ $(document).ready(function() {
     $(".bluebox-button-send").bind("click", function() {
 		$(".bluebox-retrieve-data:last").fadeOut(250, function() {
 			// Get Box items data
-//			var __item_descriptions = [];
-//			$("input[name=bluebox-item-description]").each(function() {
-//			    __item_descriptions.push($(this).val());
-//			});
-//			var __json_ship_data = [
-//			    {boxName : $("input[name=bluebox-boxname]").val()}
-//			,   {boxValue: $("input[name=bluebox-value]").val()}
-//			,   {boxItems: __item_descriptions.join(", ")}
-//			];
+			var __json_retrieve_data = {
+			    shipToName : $(".bluebox-shipto option:selected").text()
+			,   streetAddr1: $("input[name=bluebox-street-1]").val()
+			,   streetAddr2: $("input[name=bluebox-street-2]").val()
+			,   city       : $("input[name=bluebox-city]").val()
+			,   state      : $("select[name=bluebox-state] option:selected").val()
+			,   zipCode    : $("input[name=bluebox-zip]").val()
+			};
 
 	    	$(".bluebox-alert-wrapper").fadeOut(250);
 			$(this).prop("disabled", true);
 
 			var write_new_address_status = function(arg) {
 				if(arg.success) {
-					$(".bluebox-order-data").slideUp(function() {
+					$(".bluebox-retrieve-data").slideUp(function() {
 						$(".bluebox-alert-success").fadeIn(250);
 						$(".bluebox-alert-danger").fadeOut(250);
 					});
@@ -160,18 +157,16 @@ $(document).ready(function() {
 				}
 		    };
         
-        // FIXME!
-        var __json_retrieve_data = {
-          foo: 'blah',
-          bar: 'baz'
-        };
-        
-        retrieveAjax({
-          callback: write_new_address_status,
-          data: __json_retrieve_data
-        });
+	        // FIXME!
+	        var __json_retrieve_data = {
+				foo: 'blah',
+				bar: 'baz'
+	        };
 
-//			write_new_address_status({success: true});
+    		retrieveAjax({
+      			callback: write_new_address_status
+      		,	data    : __json_retrieve_data
+    		});
 		});
 	});
 
@@ -183,9 +178,9 @@ $(document).ready(function() {
 
 	// ADD ITEM BUTTON
     $(".bluebox-button-additem").click(function(e){
-        e.preventDefault();
+//        e.preventDefault();
         var __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
-        $(".bluebox-itemlist:last").after(__newItem);
+        $(".bluebox-itemlist button").before(__newItem);
 		__inputItemBlur();
 		$("input[name=bluebox-item-description]:last").focus();
     });
