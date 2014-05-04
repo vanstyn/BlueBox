@@ -17,6 +17,104 @@
 
 	<script src="../js/script.js"></script>
 
+<<<<<<< HEAD
+=======
+		.form-group label {
+			display         : block;
+		}
+
+		.bluebox-newaddress, .bluebox-alert-wrapper {
+			display         : none;
+		}
+
+		.bluebox-header.navbar-default .navbar-nav > li > a {
+			color           : #FFF;
+		}
+
+		.bluebox-header.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+		    background-color: rgba(163,​ 63,​ 35,​ 1);
+		    text-decoration : none;
+		    outline         : 0;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-actionable:hover, .bluebox-nav-lowermenu li.bluebox-actionable:focus {
+		    background-color: #2610A5;
+		    color           : #FFF;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable {
+		    background-color: #A33F23;
+		    color           : #FFF;
+		}
+
+		.navbar-default .navbar-nav > li > a.bluebox-logo {
+			background      : url("../imgs/icon_logo.svg") no-repeat top left transparent;
+			width           : 230px; 
+			height          : 66px;
+			padding         : 0;
+		}
+
+		.bluebox-nav-lowermenu li.bluebox-actionable a {
+			padding-left    : 38px;
+		}
+
+		.bluebox-order {
+			background      : url("../imgs/icon_order.svg") no-repeat left center transparent;
+		}
+
+		.bluebox-ship {
+			background      : url("../imgs/icon_ship.svg") no-repeat left center transparent;
+		}
+
+		.bluebox-retrieve {
+			background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+			$(".selectpicker").selectpicker();
+			
+			$(".bluebox-shipto").bind("change", function(e, ui) {
+				var optionSelected = $("option:selected", this);
+    			var valueSelected = this.value;
+    			if(valueSelected == "9999") {
+    				$(".bluebox-newaddress").css("opacity", 0).slideDown(500).animate({opacity: 1}, {queue: false, duration: 250});
+    			} else {
+    				$(".bluebox-newaddress").css("opacity", 1).slideUp(500).animate({opacity: 0}, {queue: false, duration: 250});
+    			}
+			});
+
+			// NAV MENU
+			$(".bluebox-nav-lowermenu li").bind("click", function() {
+				$(this).addClass("bluebox-active").siblings().removeClass("bluebox-active");
+				return false;
+			});
+
+			// ORDER BUTTON
+			$(".bluebox-button-order").bind("click", function() {
+				$(".bluebox-alert-wrapper").fadeOut(250);
+
+				$(this).prop("disabled", true);
+				var write_new_address_status = function(arg) {
+					if(arg.success) {
+						$(".bluebox-order-data").slideUp(function() {
+							$(".bluebox-alert-success").fadeIn(250);
+							$(".bluebox-alert-danger").fadeOut(250);
+						});
+					} else {
+						$(".bluebox-alert-success").fadeOut(250);
+						$(".bluebox-alert-danger").fadeIn(250);
+						$(this).prop("disabled", false);
+					}
+				};
+
+				write_new_address_status({success: false});
+				return false;
+			});
+		});
+	</script>
+>>>>>>> FETCH_HEAD
 </head>
 <body>
 
@@ -52,22 +150,22 @@
 			<div class="col-sm-offset-4 col-sm-4">
 				<form class="bluebox-order-data" method="post">
 					<div class="form-group">
-						<label for="bluebox-numboxes">Number of Boxes</label>
+						<label for="bluebox-numboxes">I want</label>
 						<select name="bluebox-numboxes" class="bluebox-numboxes selectpicker">
-						    <option value="1" selected="selected">1</option>
-						    <option value="2">2</option>
-						    <option value="3">3</option>
-						    <option value="4">4</option>
-						    <option value="5">5</option>
-						    <option value="6">6</option>
-						    <option value="7">7</option>
-						    <option value="8">8</option>
-						    <option value="9">9</option>
-						    <option value="10">10</option>
+						    <option value="1" selected="selected">1 box</option>
+						    <option value="2">2 boxes</option>
+						    <option value="3">3 boxes</option>
+						    <option value="4">4 boxes</option>
+						    <option value="5">5 boxes</option>
+						    <option value="6">6 boxes</option>
+						    <option value="7">7 boxes</option>
+						    <option value="8">8 boxes</option>
+						    <option value="9">9 boxes</option>
+						    <option value="10">10 boxes</option>
 					    </select>
 					</div>
 					<div class="form-group">
-						<label for="bluebox-shipto">Ship To</label>
+						<label for="bluebox-shipto">Sent to</label>
 						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
 						    <option value="0" selected="selected">Home</option>
 						    <option value="1">Office (me)</option>
@@ -108,7 +206,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">ORDER</a></p>
+						<p><a role="button" class="bluebox-button-order btn btn-primary btn-lg" href="#">SEND THEM</a></p>
 					</div>
 				</form>
 				<div class="bluebox-alert-success bluebox-alert-wrapper">
