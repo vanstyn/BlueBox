@@ -1,0 +1,29 @@
+
+[% SET 
+  username = c.user.get_from_storage.username 
+  login_url = '/auth/login'
+  logout_url = '/auth/logout'
+-%]
+
+	<div class="bluebox-not-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
+		<div class="container">
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/" class="bluebox-logo">&nbsp;</a></li>
+				</ul>
+        
+        [% IF username %]
+  				<ul class="nav navbar-nav navbar-right">
+  					<li><a>Hello, [%- username -%]</a></li>
+  					<li><a href="#">Account</a></li>
+  					<li><a href="[%- logout_url -%]">Logout</a></li>
+          </ul>
+        [% ELSE %]
+  				<ul class="nav navbar-nav navbar-right">
+  					<li><a href="[%- login_url -%]">Login</a></li>
+          </ul>
+        [% END %]
+        
+			</div>
+		</div>
+	</div>
