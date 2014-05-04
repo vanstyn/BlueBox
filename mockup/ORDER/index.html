@@ -69,23 +69,29 @@
 					<div class="form-group">
 						<label for="bluebox-shipto">Sent to</label>
 						<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
-						    <option value="0" selected="selected">Home</option>
+						    <option value="" selected="selected">- Select Ship-To address</option>
+						    <option value="0">Home</option>
 						    <option value="1">Office (me)</option>
 						    <option value="2">Wife's Office</option>
-						    <option value="9999">+ New Address</option>
+						    <option value="+">+ New Address</option>
 					    </select>
 					</div>
 					<div class="bluebox-newaddress">
 						<div class="form-group">
-		        			<label for="bluebox-street-1">Street Address 1</label>
+		        			<label for="bluebox-shipto-name">Give this Address a Name</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-shipto-name" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-street-1">Street Address</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
 							</div>
 						</div>
 						<div class="form-group">
-		        			<label for="bluebox-street-2">Street Address 2</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
+								<input type="text" class="form-control" name="bluebox-street-2" placeholder="street address cont'd (optional)"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -159,7 +165,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<p class="center"><a role="button" class="bluebox-orange bluebox-button-order btn btn-primary btn-lg" href="#">SEND THEM</a></p>
+						<p class="center">
+							<button class="btn-disabled bluebox-orange bluebox-button-order btn btn-primary btn-lg" disabled="disabled">SEND THEM</button>
+						</p>
 					</div>
 				</form>
 				<div class="bluebox-alert-success bluebox-alert-wrapper">
@@ -170,8 +178,9 @@
 					</div>
 					<div class="bluebox-alert-danger bluebox-alert-wrapper">
 						<div class="bluebox-alert alert alert-danger">
-						<p><strong>FAIL!</strong></p>
-						<div>There was an error. Please try again.</div>
+							<p><strong>FAIL!</strong></p>
+							<div>There was an error. Please try again.</div>
+						</div>
 					</div>
 				</div>
 			</div>
