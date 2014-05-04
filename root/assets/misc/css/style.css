@@ -1,156 +1,215 @@
 * {
-      text-shadow     : none;
-    }
+  text-shadow     : none;
+}
 
-    html, body {
-      padding         : 0;
-      margin          : 0 auto;
-      font-family     : 'Open Sans', sans-serif;
-    }
+html, body {
+  font-family     : 'Open Sans', sans-serif;
+  padding         : 0;
+  margin          : 0 auto;
+}
 
-    body {
-      padding-top     : 69px;
-    }
+body {
+  padding-top     : 69px;
+}
 
-    .container {
-      width           : 960px;
-    }
+.container {
+  width           : 960px;
+}
 
-    .bluebox-font {
-      font-family     : "Roboto Condensed", sans-serif;
-    }
+.bluebox-font, .alert {
+  font-family     : "Roboto Condensed", sans-serif;
+}
 
-    .bluebox-header, .bluebox-not-header {
-      font-size       : 2em;
-    }
+.bluebox-header, .bluebox-not-header {
+  font-size       : 2em;
+}
 
-    .bluebox-header {
-      background      : none repeat scroll 0 0 #092643;
-    }
+.bluebox-header {
+  background      : none repeat scroll 0 0 #092643;
+}
 
-    .bluebox-header nav, .bluebox-footer, .bluebox-name {
-      font-weight     : bold;
-    }
+.bluebox-header nav, .bluebox-footer, .bluebox-name {
+  font-weight     : bold;
+}
 
-    .bluebox-footer {
-      text-align      : center;
-      font-size       : 1.25em;
-    }
+.bluebox-footer {
+  text-align      : center;
+  font-size       : 1.25em;
+}
 
-    .jumbotron {
-        padding-bottom  : 12px;
-        padding-top     : 12px;
-    }
+.jumbotron {
+    padding-bottom  : 12px;
+    padding-top     : 12px;
+}
 
-    .bluebox-lightblue {
-      color           : #2162A7;
-    }
+.bluebox-lightblue {
+  color           : #2162A7;
+}
 
-    .bluebox-darkblue {
-      color           : #092643;
-    }
+.bluebox-darkblue {
+  color           : #092643;
+}
 
-    .bluebox-nav-quad {
-      width           : 800px;
-      margin          : auto;
-    }
+.bluebox-nav-quad {
+  width           : 800px;
+  margin          : auto;
+}
 
-    .border-right-bottom, .border-left-bottom {
-      border-bottom   : 1px solid #2610A5;
-    }
+.border-right-bottom, .border-left-bottom {
+  border-bottom   : 1px solid #2610A5;
+}
 
-    .border-right-top, .border-left-top {
-      border-top      : 1px solid #2610A5;
-    }
+.border-right-top, .border-left-top {
+  border-top      : 1px solid #2610A5;
+}
 
-    .border-right-bottom, .border-right-top {
-      border-right    : 1px solid #2610A5;
-    }
+.border-right-bottom, .border-right-top {
+  border-right    : 1px solid #2610A5;
+}
 
-    .border-left-bottom, .border-left-top {
-      border-left     : 1px solid #2610A5;
-    }
+.border-left-bottom, .border-left-top {
+  border-left     : 1px solid #2610A5;
+}
 
-    .bluebox-nav-quad {
-      margin          : 1em auto;
-    }
+.bluebox-nav-quad {
+  margin          : 1em auto;
+}
 
-    .bluebox-inline {
-      display         : inline;
-    }
+.bluebox-inline {
+  display         : inline;
+}
 
-    .nav.navbar-nav.bluebox-nav-lowermenu li {
-      width           : 190px;
-    }
+.nav.navbar-nav.bluebox-nav-lowermenu li {
+  width           : 190px;
+}
 
-    .nav.navbar-nav.bluebox-nav-lowermenu li:first-child {
-      width           : 220px;
-    }
+.nav.navbar-nav.bluebox-nav-lowermenu li:first-child {
+  width           : 220px;
+}
 
-    .navbar-nav.bluebox-nav-cue > li > a {
-      padding         : 5px;
-      line-height     : 12px;
-    }
+.navbar-nav.bluebox-nav-cue > li > a {
+  padding         : 5px;
+  line-height     : 12px;
+}
 
-    .form-group label {
-      display         : block;
-    }
+.form-group label {
+  display         : block;
+}
 
-    .bluebox-newaddress, .bluebox-alert-wrapper {
-      display         : none;
-    }
+.bluebox-newaddress, .bluebox-alert-wrapper {
+  display         : none;
+}
 
-    .bluebox-header.navbar-default .navbar-nav > li > a {
-      color           : #FFF;
-    }
+.bluebox-header.navbar-default .navbar-nav > li > a {
+  color           : #FFF;
+}
 
-    .bluebox-header.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-        background-color: rgba(163,​ 63,​ 35,​ 1);
-        color           : #FFF;
-        text-decoration : none;
-    }
+.bluebox-header.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: rgba(163,​ 63,​ 35,​ 1);
+    text-decoration : none;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-actionable:hover, .bluebox-nav-lowermenu li.bluebox-actionable:focus {
-        background-color: #2610A5;
-        color           : #FFF;
-    }
+.bluebox-nav-lowermenu li.bluebox-actionable:hover, .bluebox-nav-lowermenu li.bluebox-actionable:focus {
+    background-color: #2610A5;
+    color           : #FFF;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable {
-        background-color: #A33F23;
-        color           : #FFF;
-    }
+.bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable {
+    background-color: #A33F23;
+    color           : #FFF;
+}
 
-    .navbar-default .navbar-nav > li > a.bluebox-logo {
-      background      : url("../imgs/icon_logo.svg") no-repeat top left transparent;
-      width           : 230px;
-      height          : 66px;
-      padding         : 0;
-    }
+.navbar-default .navbar-nav > li > a.bluebox-logo {
+  background      : url("../imgs/icon_logo.svg") no-repeat top left transparent;
+  width           : 230px;
+  height          : 66px;
+  padding         : 0;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-actionable a {
-      padding-left    : 38px;
-    }
+.bluebox-nav-lowermenu li.bluebox-actionable a {
+ padding-left    : 38px;
+ outline         : 0;
+}
 
-    .bluebox-order, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-order {
-      background      : url("../imgs/icon_order.svg") no-repeat left center transparent;
-    }
+.bluebox-order {
+  background      : url("../imgs/icon_order.svg") no-repeat left center transparent;
+}
 
-    .bluebox-ship, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-ship {
-      background      : url("../imgs/icon_ship.svg") no-repeat left center transparent;
-    }
+.bluebox-ship {
+  background      : url("../imgs/icon_ship.svg") no-repeat left center transparent;
+}
 
-    .bluebox-retrieve, .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-retrieve {
-      background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
-    }
+.bluebox-retrieve {
+  background      : url("../imgs/icon_retrieve.svg") no-repeat left center transparent;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-order:hover {
-      background      : url("../imgs/icon_order.svg") no-repeat left center #A33F23;
-    }
+.bluebox-feedback {
+	color            : #A33F23;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-ship:hover {
-      background      : url("../imgs/icon_ship.svg") no-repeat left center #A33F23;
-    }
+.alert {
+	font-size     : 1.5em;
+	padding-left  : 48px;
+}
 
-    .bluebox-nav-lowermenu li.bluebox-active.bluebox-actionable.bluebox-retrieve:hover {
-      background      : url("../imgs/icon_retrieve.svg") no-repeat left center #A33F23;
-    }
+.alert-success {
+    background-image : none;
+    border-color     : #092643;
+    border-width     : 3px;
+    background-color : #FFF;
+    color            : #092643;
+    background       : url("../imgs/bluebox-logo-small.png") no-repeat 0.1em 0.6em transparent;
+}
+
+.bluebox-itemrow {
+	margin-left      : 0;
+}
+
+.bluebox-itemlist-spacer {
+	font-size        : 8px;
+}
+
+.bluebox-retrieve-data .checkbox label {
+	font-weight      : bold;
+	font-size        : 1.3em;
+	color            : #A33F23;
+}
+
+.bluebox-boxanditems-boxname input[type="checkbox"] {
+    margin-top       : 8px;
+}
+
+.bluebox-boxanditems-checkbox-wrapper {
+	margin           : 0.9em auto;
+	border           : 1px solid #CCC;
+	padding          : 1em;
+}
+
+.bluebox-boxanditems-boxname {
+	margin-left      : 1em;
+}
+
+.bluebox-retrieve-data .form-group > label {
+	font-size        : 1.1em;
+	text-align       : center;
+}
+
+.bluebox-retrieve-data .form-group:first-child {
+	border-bottom    : 2px solid #CCC;
+}
+
+.center {
+	text-align       : center;
+}
+
+input[type="text"] {
+  	box-sizing       : border-box;// Makes inputs behave like true block-level elements
+}
+
+.bluebox-red * {
+	color            : #7C2B18;
+}
+
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+	width            : 100%;
+}

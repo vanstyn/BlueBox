@@ -25,6 +25,13 @@ $(document).ready(function() {
          	$(".bluebox-newaddress").css("opacity", 1).slideUp(500).animate({opacity: 0}, {queue: false, duration: 250});
         }
     });
+    
+  	// NUMBER OF BOXES
+    $(".bluebox-numboxes").bind("change", function(e, ui) {
+    	var optionSelected = $("option:selected", this);
+        var valueSelected = this.value;
+		$(".bluebox-feedback-numboxes").text($(".bluebox-numboxes option:selected").text());
+    });
 
     // NAV MENU
     $(".bluebox-nav-lowermenu li").bind("click", function() {
@@ -124,6 +131,14 @@ $(document).ready(function() {
 		__inputItemBlur();
 		$("input[name=bluebox-item-description]:last").focus();
     });
+    
+  	// INITIALIZE BOXES & ITEMS
+  	for(var item in __arrayRetrieve) {
+  	    if(__arrayRetrieve.hasOwnProperty(item)) {
+  	        __currentBox = $('<div class="bluebox-boxanditems-checkbox-wrapper checkbox"><div class="bluebox-boxanditems-wrapper"><div class="bluebox-boxanditems-boxname"><label class="bluebox-font"><input type="checkbox"/>' + __arrayRetrieve[item].boxName + '</label></div><div class="bluebox-boxanditems-items"><span>' + __arrayRetrieve[item].boxItems.join(", ") + '</span></div></div></div>');
+  	        $(".bluebox-boxanditems").append(__currentBox);
+  	    }
+  	}
 
 	if($("input[name=bluebox-boxname]").length > 0) {
 		$("input[name=bluebox-boxname]").focus();
