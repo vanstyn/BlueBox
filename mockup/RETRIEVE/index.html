@@ -51,20 +51,119 @@
         			<label>WHICH BOXES DO YOU WANT TO RETRIEVE?</label>
 				</div>
 				<div class="form-group">
-					<div class="bluebox-boxanditems">
-				    </div>
+					<div class="bluebox-boxanditems"></div>
 				</div>
 				<div class="form-group">
-					<p class="center"><a role="button" class="bluebox-button-retrieve btn btn-primary btn-lg" href="#">RETRIEVE SELECTED BOXES</a></p>
+					<p class="center"><a role="button" class="btn-disabled bluebox-orange bluebox-button-retrieve btn btn-primary btn-lg" href="#" disabled="disabled">RETRIEVE SELECTED BOXES</a></p>
+				</div>
+			</form>
+			<form class="bluebox-retrieve-data bluebox-hidden" method="post">
+				<div class="form-group">
+        			<label>WHERE DO YOU WANT THESE BOXES SENT?</label>
+				</div>
+				<div class="form-group">
+					<div class="bluebox-receiveboxes bluebox-orange"></div>
+				</div>
+				<div class="form-group">
+					<label for="bluebox-shipto">Sent to</label>
+					<select name="bluebox-shipto" class="bluebox-shipto selectpicker">
+					    <option value="0" selected="selected">Home</option>
+					    <option value="1">Office (me)</option>
+					    <option value="2">Wife's Office</option>
+					    <option value="9999">+ New Address</option>
+				    </select>
+					<div class="bluebox-newaddress">
+						<div class="form-group">
+		        			<label for="bluebox-street-1">Street Address 1</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-1" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-street-2">Street Address 2</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-street-2" placeholder="optional"/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-city">City</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-city" placeholder="required" required/>
+							</div>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-state">State</label>
+							<select name="bluebox-state" class="selectpicker">
+								<option value="" selected="selected">Select a State</option> 
+								<option value="AL">Alabama</option> 
+								<option value="AK">Alaska</option> 
+								<option value="AZ">Arizona</option> 
+								<option value="AR">Arkansas</option> 
+								<option value="CA">California</option> 
+								<option value="CO">Colorado</option> 
+								<option value="CT">Connecticut</option> 
+								<option value="DE">Delaware</option> 
+								<option value="DC">District Of Columbia</option> 
+								<option value="FL">Florida</option> 
+								<option value="GA">Georgia</option> 
+								<option value="HI">Hawaii</option> 
+								<option value="ID">Idaho</option> 
+								<option value="IL">Illinois</option> 
+								<option value="IN">Indiana</option> 
+								<option value="IA">Iowa</option> 
+								<option value="KS">Kansas</option> 
+								<option value="KY">Kentucky</option> 
+								<option value="LA">Louisiana</option> 
+								<option value="ME">Maine</option> 
+								<option value="MD">Maryland</option> 
+								<option value="MA">Massachusetts</option> 
+								<option value="MI">Michigan</option> 
+								<option value="MN">Minnesota</option> 
+								<option value="MS">Mississippi</option> 
+								<option value="MO">Missouri</option> 
+								<option value="MT">Montana</option> 
+								<option value="NE">Nebraska</option> 
+								<option value="NV">Nevada</option> 
+								<option value="NH">New Hampshire</option> 
+								<option value="NJ">New Jersey</option> 
+								<option value="NM">New Mexico</option> 
+								<option value="NY">New York</option> 
+								<option value="NC">North Carolina</option> 
+								<option value="ND">North Dakota</option> 
+								<option value="OH">Ohio</option> 
+								<option value="OK">Oklahoma</option> 
+								<option value="OR">Oregon</option> 
+								<option value="PA">Pennsylvania</option> 
+								<option value="RI">Rhode Island</option> 
+								<option value="SC">South Carolina</option> 
+								<option value="SD">South Dakota</option> 
+								<option value="TN">Tennessee</option> 
+								<option value="TX">Texas</option> 
+								<option value="UT">Utah</option> 
+								<option value="VT">Vermont</option> 
+								<option value="VA">Virginia</option> 
+								<option value="WA">Washington</option> 
+								<option value="WV">West Virginia</option> 
+								<option value="WI">Wisconsin</option> 
+								<option value="WY">Wyoming</option>
+						    </select>
+						</div>
+						<div class="form-group">
+		        			<label for="bluebox-zip">ZIP</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="bluebox-zip" placeholder="required" required/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<p class="center"><a role="button" class="btn-disabled bluebox-orange bluebox-button-retrieve btn btn-primary btn-lg" href="#" disabled="disabled">SEND THEM TO ME</a></p>
 				</div>
 			</form>
 			<div class="bluebox-alert-success bluebox-alert-wrapper">
 				<div class="bluebox-alert alert alert-success">
-					<p><strong>Sweet!</strong></p>
-					<p>We'll keep an eye out for your <span class="bluebox-feedback bluebox-feedback-boxname">Sweaters</span> box and let you know when it arrives.</p>
-					<p><span class="bluebox-feedback bluebox-feedback-boxname">Sweaters</span> contains:</p>
-					<div class="bluebox-feedback bluebox-list-joined">Cardigan, Argyle, Cosby, Cashmere, Turtleneck, V-neck, Sweater Vest</div>
-				</div>
+					<p><strong>On their way!</strong></p>
+					<p>Your <span class="bluebox-feedback bluebox-feedback-receiveboxes">sweaters and shirts</span> boxes are getting prepped and should arrive in 3 to 4 days.
 				</div>
 				<div class="bluebox-alert-danger bluebox-alert-wrapper">
 					<div class="bluebox-alert alert alert-danger">

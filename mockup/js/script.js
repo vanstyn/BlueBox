@@ -8,7 +8,7 @@ var __arrayRetrieve = [
 // ENTER ITEM NAME
 function __inputItemBlur() {
 	$("input[name=bluebox-item-description]").blur(function() {
-		__arrayItemList = [];
+		var __arrayItemList = [];
 		$("input[name=bluebox-item-description]").each(function() {
 			__arrayItemList.push($(this).val());
 		});
@@ -48,7 +48,7 @@ $(document).ready(function() {
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
 		// Get Box items data
-		__json_order_data = [
+		var __json_order_data = [
 		    {numBoxes   : parseInt($(".bluebox-numboxes option:selected").text().split(" ")[0])}
 		,   {shipToName : $(".bluebox-shipto option:selected").text()}
 		,   {streetAddr1: $("input[name=bluebox-street-1]").val()}
@@ -74,17 +74,16 @@ $(document).ready(function() {
 	    };
 
 		write_new_address_status({success: true});
-		return false;
 	});
 
     // SHIP BUTTON
     $(".bluebox-button-ship").bind("click", function() {
 		// Get Box items data
-		__item_descriptions = [];
+		var __item_descriptions = [];
 		$("input[name=bluebox-item-description]").each(function() {
 		    __item_descriptions.push($(this).val());
 		});
-		__json_ship_data = [
+		var __json_ship_data = [
 		    {boxName : $("input[name=bluebox-boxname]").val()}
 		,   {boxValue: $("input[name=bluebox-value]").val()}
 		,   {boxItems: __item_descriptions.join(", ")}
@@ -107,7 +106,18 @@ $(document).ready(function() {
 	    };
 
 		write_new_address_status({success: true});
-		return false;
+	});
+
+    // RETRIEVE BUTTON 1
+    $(".bluebox-button-retrieve").bind("click", function() {
+		$(".bluebox-retrieve-data:first").fadeOut(250, function() {
+		    $(".bluebox-retrieve-data:last").fadeIn(250);
+			var __arrayRetrieve = [];
+			$(".bluebox-boxanditems .bluebox-boxanditems-checkbox-wrapper input[type=checkbox]:checked").each(function() {
+			    __arrayRetrieve.push($(this).parent().text());
+			});
+			$(".bluebox-receiveboxes").text(__arrayRetrieve.join(", "));
+		});
 	});
 
 	// ENTER BOX NAME
@@ -119,7 +129,7 @@ $(document).ready(function() {
 	// ADD ITEM BUTTON
     $(".bluebox-button-additem").click(function(e){
         e.preventDefault();
-        __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
+        var __newItem = $('<div class="bluebox-itemlist-spacer">&nbsp;</div><input autocomplete="off" class="span3" name="bluebox-item-description" type="text" placeholder="optional"/>');
         $(".bluebox-itemlist:last").after(__newItem);
 		__inputItemBlur();
 		$("input[name=bluebox-item-description]:last").focus();
@@ -128,7 +138,7 @@ $(document).ready(function() {
 	// INITIALIZE BOXES & ITEMS
 	for(var item in __arrayRetrieve) {
 	    if(__arrayRetrieve.hasOwnProperty(item)) {
-	        __currentBox = $('<div class="bluebox-boxanditems-checkbox-wrapper checkbox"><div class="bluebox-boxanditems-wrapper"><div class="bluebox-boxanditems-boxname"><label class="bluebox-font"><input type="checkbox"/>' + __arrayRetrieve[item].boxName + '</label></div><div class="bluebox-boxanditems-items"><span>' + __arrayRetrieve[item].boxItems.join(", ") + '</span></div></div></div>');
+	        var __currentBox = $('<div class="bluebox-boxanditems-checkbox-wrapper checkbox"><div class="bluebox-boxanditems-wrapper"><div class="bluebox-boxanditems-boxname"><label class="bluebox-font"><input type="checkbox"/>' + __arrayRetrieve[item].boxName + '</label></div><div class="bluebox-boxanditems-items"><span>' + __arrayRetrieve[item].boxItems.join(", ") + '</span></div></div></div>');
 	        $(".bluebox-boxanditems").append(__currentBox);
 	    }
 	}
@@ -136,4 +146,16 @@ $(document).ready(function() {
 	if($("input[name=bluebox-boxname]").length > 0) {
 		$("input[name=bluebox-boxname]").focus();
 	}
+
+	// RETRIEVE
+	$(".bluebox-boxanditems input[type=checkbox]").each(function() {
+	    $(this).bind("change", function() {
+	        var __countChecked = $(".bluebox-boxanditems input[type=checkbox]:checked").length;
+	        if(__countChecked == 0) {
+	            $(".bluebox-button-retrieve").addClass("btn-disabled").attr("disabled", "disabled");
+	        } else {
+	            $(".bluebox-button-retrieve").removeClass("btn-disabled").removeAttr("disabled");
+	        }
+	    });
+	});
 });
