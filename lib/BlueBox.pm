@@ -4,7 +4,8 @@ use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
 
-use RapidApp 0.99202;
+use RapidApp 0.99203;
+use RapidApp::Include qw(sugar perlutil);
 
 use Catalyst qw/
     RapidApp::RapidDbic
@@ -86,6 +87,14 @@ __PACKAGE__->config(
 # Start the application
 __PACKAGE__->setup();
 
+# Special override for the 'admin' user only: turn back on the tabgui:
+before 'finalize_body' => sub {
+  my $c = shift;
+  if($c->can('session') && $c->session) {
+    my $username = try{$c->user->username};
+    $c->session->{disable_tabgui} = 0 if ($username && $username eq 'admin');
+  }
+};
 
 
 1;
