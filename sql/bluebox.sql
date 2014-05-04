@@ -82,3 +82,17 @@ CREATE TABLE [shipment] (
   FOREIGN KEY ([location_id]) REFERENCES [location] ([id]) 
    ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+DROP TABLE IF EXISTS [order];
+CREATE TABLE [order] (
+  [id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  [account_id] INTEGER NOT NULL,
+  [location_id] INTEGER NOT NULL,
+  [qty] INTEGER NOT NULL,
+  [ordered_on] datetime NOT NULL,
+  [deliver_on] datetime DEFAULT NULL,
+  FOREIGN KEY ([account_id]) REFERENCES [account] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY ([location_id]) REFERENCES [location] ([id]) 
+   ON DELETE CASCADE ON UPDATE CASCADE
+);

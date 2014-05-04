@@ -37,10 +37,16 @@ __PACKAGE__->has_many(
   { "foreign.account_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
+__PACKAGE__->has_many(
+  "orders",
+  "BlueBox::DB::Result::Order",
+  { "foreign.account_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-03 18:58:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k6wAsJzUF4Q5AlZV1BmUqQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-03 20:17:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c/CClZLMRcuYr016uLlxmQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
