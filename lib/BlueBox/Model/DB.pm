@@ -1,7 +1,9 @@
 package BlueBox::Model::DB;
+use Moo;
+extends 'Catalyst::Model::DBIC::Schema';
 
 use strict;
-use base 'Catalyst::Model::DBIC::Schema';
+use warnings;
 
 use Path::Class qw(file);
 use Catalyst::Utils;
@@ -21,6 +23,11 @@ __PACKAGE__->config(
     }
 );
 
-
+# Auto-deploy:
+before 'setup' => sub {
+  my $self = shift;
+  return if (-f $db);
+  $self->schema_class->connect($self->connect_info->{dsn})->deploy;
+};
 
 1;
