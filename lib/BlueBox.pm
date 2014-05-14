@@ -21,6 +21,12 @@ our $TITLE = "BlueBox v" . $VERSION;
 
 __PACKAGE__->config(
     name => 'BlueBox',
+    
+    'Plugin::RapidApp::TabGui' => {
+      title => $TITLE,
+      nav_title => 'BlueBox Administration',
+      nav_title_iconcls => 'icon-bb-logo',
+    },
 
     'Model::RapidApp' => {
       root_template_prefix  => 'site/public/page/',
