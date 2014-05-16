@@ -26,6 +26,7 @@ __PACKAGE__->config(
       title => $TITLE,
       nav_title => 'BlueBox Administration',
       nav_title_iconcls => 'icon-bb-logo',
+      banner_template => 'banner.html',
     },
 
     'Model::RapidApp' => {
