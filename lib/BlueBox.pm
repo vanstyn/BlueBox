@@ -104,8 +104,7 @@ __PACKAGE__->setup();
 before 'finalize_body' => sub {
   my $c = shift;
   if($c->can('session') && $c->session) {
-    my $username = try{$c->user->username};
-    $c->session->{disable_tabgui} = 0 if ($username && $username eq 'admin');
+    $c->session->{disable_tabgui} = 0 if $c->check_any_user_role('administrator');
   }
 };
 
