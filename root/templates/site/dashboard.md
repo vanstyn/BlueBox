@@ -2,5 +2,15 @@
 
 <ul>
 <li><a href="/main/db/rapidapp_coreschema_user">Manage Users</a></li>
-<li><a href="/tple/site/public/page/home.html">Edit Home Page</a></li>
+<li><a href="/tple/site/public/page/home.html">Edit Home Page (full page)</a></li>
+</ul>
+
+
+##### Edit specific home page sub-templates:
+
+These are links to the specific parts of the landing page which have text which can be easily edited (i.e have very simple HTML markup). These can also be edited from the home page (link above) by mouse-over the specific sections
+
+<ul>
+<li><a href="/tple/site/public/page/home/top_copy.html">First Section - Top Copy</a></li>
+<li><a href="/tple/site/public/page/home/welcome_body.html">Second Section - Welcome Body</a></li>
 </ul>
