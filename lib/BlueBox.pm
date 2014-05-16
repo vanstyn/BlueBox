@@ -19,14 +19,20 @@ extends 'Catalyst';
 our $VERSION = '0.01';
 our $TITLE = "BlueBox v" . $VERSION;
 
+my $tpl_regex = '^site\/';
+
 __PACKAGE__->config(
     name => 'BlueBox',
     
     'Plugin::RapidApp::TabGui' => {
       title => $TITLE,
-      nav_title => 'BlueBox Administration',
+      nav_title => 'Administration',
       nav_title_iconcls => 'icon-bb-logo',
+      navtree_init_width => 210,
+      navtree_load_collapsed => 1,
       banner_template => 'banner.html',
+      #dashboard_url => '/',
+      template_navtree_regex => $tpl_regex.'public\/'
     },
 
     'Model::RapidApp' => {
@@ -38,10 +44,10 @@ __PACKAGE__->config(
     'Controller::RapidApp::Template' => {
       default_template_extension => 'html',
       access_params => {
-        #writable_regex      => $tpl_regex,
-        #creatable_regex     => $tpl_regex,
-        #deletable_regex     => $tpl_regex,
-        external_tpl_regex  => '^site\/',
+        writable_regex      => $tpl_regex,
+        creatable_regex     => $tpl_regex,
+        deletable_regex     => $tpl_regex,
+        external_tpl_regex  => $tpl_regex,
       },
       access_class => 'BlueBox::Template::Access',
     },
