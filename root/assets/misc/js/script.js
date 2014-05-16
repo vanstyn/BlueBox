@@ -56,10 +56,10 @@ $(document).ready(function() {
 		$(".bluebox-feedback-numboxes").text($(".bluebox-numboxes option:selected").text());
     });
 
-    // NAV MENU
-    $(".bluebox-nav-lowermenu li").bind("click", function() {
-		$(this).addClass("bluebox-active").siblings().removeClass("bluebox-active");
-    });
+    // NAV MENU  -- this is redundant 
+    //$(".bluebox-nav-lowermenu li").bind("click", function() {
+		//$(this).addClass("bluebox-active").siblings().removeClass("bluebox-active");
+    //});
 
     // ORDER BUTTON
     $(".bluebox-button-order").bind("click", function() {
