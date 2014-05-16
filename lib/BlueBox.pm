@@ -31,8 +31,8 @@ __PACKAGE__->config(
       navtree_init_width => 210,
       navtree_load_collapsed => 1,
       banner_template => 'banner.html',
-      #dashboard_url => '/',
-      template_navtree_regex => $tpl_regex.'public\/'
+      dashboard_url => '/tple/site/dashboard.md',
+      template_navtree_regex => $tpl_regex
     },
 
     'Model::RapidApp' => {
@@ -47,7 +47,7 @@ __PACKAGE__->config(
         writable_regex      => $tpl_regex,
         creatable_regex     => $tpl_regex,
         deletable_regex     => $tpl_regex,
-        external_tpl_regex  => $tpl_regex,
+        external_tpl_regex  => $tpl_regex.'public\/',
       },
       access_class => 'BlueBox::Template::Access',
     },
