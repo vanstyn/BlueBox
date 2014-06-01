@@ -1,0 +1,43 @@
+[% WRAPPER site/wrapper.html
+  active_section = 'order'
+  title = 'Order'
+-%]
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="jumbotron-image"><img src="/assets/local/misc/static/imgs/BlueBox_FrontEnd_HOME.png"/></div>
+    <div class="container container-copy bluebox-copy-top bluebox-font">
+      [% INCLUDE site/public/page/home/top_copy.html %]
+    </div>
+    <div class="container container-copy bluebox-font">
+      <h3 class="font-bold text-center">Welcome to <span class="bluebox-darkblue">BLUE</span><span class="bluebox-lightblue">BOX</span></h3>
+      
+      
+      <iframe 
+        class="ux-mif" 
+        frameborder="0" 
+        style="overflow: auto; width: 100%; height: 450px;" 
+        src="/rapidapp/module/direct/adm/main/db/db_order"
+      ></iframe>
+      
+      
+      <!--
+      
+      <div class="ra-async-autopanel" style="width:800px; height: 450px;border-style:dotted;border-width:1px;">
+        {
+          url: "/adm/main/db/db_account"
+        }
+      </div>
+      
+      <div class="ra-async-autopanel ra-async-autopanel-loaded">
+        {
+          url: "/adm/main/db/rapidapp_coreschema_user"
+        }
+      </div>
+      -->
+      
+    </div>
+  </div>
+</div>
+
+  [% END %]
