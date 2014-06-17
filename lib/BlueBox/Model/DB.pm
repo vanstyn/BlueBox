@@ -30,6 +30,7 @@ __PACKAGE__->config(
     },
     
     RapidDbic => {
+      hide_fk_columns => 1,
       grid_params => {
         '*defaults' => {
           updatable_colspec => ['*'],
@@ -39,13 +40,13 @@ __PACKAGE__->config(
       },
       TableSpecs => {
         Account => {
-          
+          display_column => 'username'
         },
         BoxType => {
-          
+          display_column => 'name'
         },
         BoxStatus => {
-          
+          display_column => 'name'
         },
         Box => {
           
@@ -54,7 +55,7 @@ __PACKAGE__->config(
           
         },
         Location => {
-          
+          display_column => 'name'
         },
         Shipment => {
           

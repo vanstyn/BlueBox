@@ -2,10 +2,7 @@ package BlueBox;
 use Moose;
 use namespace::autoclean;
 
-use Catalyst::Runtime 5.80;
-
-use RapidApp 0.99302;
-use RapidApp::Include qw(sugar perlutil);
+use RapidApp 0.99310;
 
 use Catalyst qw/
     RapidApp::AuthCore
@@ -23,6 +20,10 @@ my $tpl_regex = '^site\/';
 __PACKAGE__->config(
     name => 'BlueBox',
     
+    'RapidApp' => {
+      module_root_namespace => 'adm'
+    },
+    
     'Plugin::RapidApp::TabGui' => {
       title => $TITLE,
       nav_title => 'Administration',
@@ -32,14 +33,12 @@ __PACKAGE__->config(
       dashboard_url => '/tple/site/dashboard.md',
       template_navtree_regex => $tpl_regex
     },
-
-    'Model::RapidApp' => {
-      root_template_prefix  => 'site/public/page/',
-      root_template         => 'site/public/page/home',
-      module_root_namespace => 'adm'
-    },
     
     'Controller::RapidApp::Template' => {
+      root_template_prefix  => 'site/public/page/',
+      root_template         => 'site/public/page/home',
+      read_alias_path => '/tpl',  #<-- already the default
+      edit_alias_path => '/tple', #<-- already the default
       default_template_extension => 'html',
       access_params => {
         writable_regex      => $tpl_regex,
