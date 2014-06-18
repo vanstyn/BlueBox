@@ -24,6 +24,10 @@ __PACKAGE__->config(
       module_root_namespace => 'adm'
     },
     
+    'Plugin::RapidApp::AuthCore' => {
+      login_logo_url => '/assets/local/misc/static/imgs/bluebox-login-logo.png'
+    },
+    
     'Plugin::RapidApp::TabGui' => {
       title => $TITLE,
       nav_title => 'Administration',
