@@ -1,7 +1,7 @@
 package BlueBox::DB::ResultSet::Account;
 use base 'DBIx::Class::ResultSet';
 
-use RapidApp::Include qw(sugar perlutil);
+use RapidApp::Util qw(:all);
 
 use strict;
 use warnings;

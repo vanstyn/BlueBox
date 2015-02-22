@@ -2,7 +2,7 @@ package BlueBox::Template::Access;
 use strict;
 use warnings;
 
-use RapidApp::Include qw(sugar perlutil);
+use RapidApp::Util qw(:all);
 
 use Moo;
 

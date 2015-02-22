@@ -49,7 +49,7 @@ __PACKAGE__->has_many(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:c/CClZLMRcuYr016uLlxmQ
 
 use JSON qw(encode_json);
-use RapidApp::Include qw(sugar perlutil);
+use RapidApp::Util qw(:all);
 
 sub locations_list {
   my $self = shift;

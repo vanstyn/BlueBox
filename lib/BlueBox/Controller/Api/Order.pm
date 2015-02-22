@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use JSON qw(decode_json);
 
-use RapidApp::Include qw(sugar perlutil);
+use RapidApp::Util qw(:all);
 
 BEGIN { extends 'Catalyst::Controller'; }
 

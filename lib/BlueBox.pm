@@ -2,7 +2,7 @@ package BlueBox;
 use Moose;
 use namespace::autoclean;
 
-use RapidApp 0.99310;
+use RapidApp 1.0010;
 
 use Catalyst qw/
     RapidApp::AuthCore
