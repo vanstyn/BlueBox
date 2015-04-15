@@ -29,6 +29,10 @@ __PACKAGE__->config(
         quote_names => q{1},
     },
     
+    # The existence of the config key 'RapidDbic' automatically enables
+    # this model/schema to be setup in the interface *if* the 
+    # RapidApp::RapidDbic plugin has been loaded (in the main app class).
+    # Otherwise, this is just passive extra data and will have no effect...
     RapidDbic => {
       hide_fk_columns => 1,
       grid_params => {
