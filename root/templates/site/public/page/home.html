@@ -3,9 +3,11 @@
   title = 'Home'
 -%]
 
+[% SET mnt_pfx = c.mount_url %]
+
 <div class="container">
     <div class="jumbotron">
-      <div class="jumbotron-image"><img src="/assets/local/misc/static/imgs/BlueBox_FrontEnd_HOME.png"/></div>
+      <div class="jumbotron-image"><img src="[% mnt_pfx %]/assets/local/misc/static/imgs/BlueBox_FrontEnd_HOME.png"/></div>
       <div class="container container-copy bluebox-copy-top bluebox-font">
         [% INCLUDE site/public/page/home/top_copy.html %]
       </div>

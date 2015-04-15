@@ -3,11 +3,13 @@
   title = 'Home'
 -%]
 
+[% SET mnt_pfx = c.mount_url %]
+
 <div class="container">
 
   <div class="content-box">
 
-    <form action="/auth/login" method="post" class="nice" id="l_form">
+    <form action="[% mnt_pfx %]/auth/login" method="post" class="nice" id="l_form">
 
       <input type="hidden" id="hashpath" name="hashpath" value="">
 

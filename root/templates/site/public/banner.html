@@ -1,9 +1,9 @@
-
+[% SET mnt_pfx = c.mount_url %]
 <div class="bluebox-not-header bluebox-bg navbar navbar-default navbar-fixed-top bluebox-font">
   <div class="container">
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/" class="bluebox-logo">&nbsp;</a></li>
+        <li><a href="[% mnt_pfx %]/" class="bluebox-logo">&nbsp;</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -14,7 +14,7 @@
         
          [% IF c.check_user_roles('administrator') %]
           <li><a>|</a></li>
-          <li><a style="text-transform: none;" href="/adm">Site Administration</a></li>
+          <li><a style="text-transform: none;" href="[% mnt_pfx %]/adm">Site Administration</a></li>
          [% END %]
       [% ELSE %]
          <li><a href="[%- login_url -%]">Login</a></li>

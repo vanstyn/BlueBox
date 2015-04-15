@@ -1,7 +1,8 @@
 [%- SET
+  mnt_pfx = c.mount_url
   username = c.user.get_from_storage.username
-  login_url = '/auth/login'
-  logout_url = '/auth/logout'
+  login_url = mnt_pfx _ '/auth/login'
+  logout_url = mnt_pfx _ '/auth/logout'
   locations_list = account.locations_list
 -%]
 <!DOCTYPE html>
@@ -21,24 +22,24 @@
   </script>
 
   <!-- These are the min needed JS files for Ext to be available and play nicely with jQuery -->
-  <script src="/assets/extjs/current/adapter/ext/ext-base.js"></script>
-  <script src="/assets/extjs/current/ext-all.js"></script>
-  <script type="text/javascript" src="/assets/rapidapp/js/current.js"></script>
+  <script src="[% mnt_pfx %]/assets/extjs/current/adapter/ext/ext-base.js"></script>
+  <script src="[% mnt_pfx %]/assets/extjs/current/ext-all.js"></script>
+  <script type="text/javascript" src="[% mnt_pfx %]/assets/rapidapp/js/current.js"></script>
   <!-- -->
 
-	<script src="/assets/local/misc/static/js/jquery-1.11.0.min.js"></script>
-	<script src="/assets/local/misc/static/js/jquery-ui.min.js"></script>
+	<script src="[% mnt_pfx %]/assets/local/misc/static/js/jquery-1.11.0.min.js"></script>
+	<script src="[% mnt_pfx %]/assets/local/misc/static/js/jquery-ui.min.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic|Open+Sans:400,400italic,700,700italic" rel="stylesheet" type="text/css"/>
-	<link href="/assets/local/misc/static/ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="/assets/local/misc/static/ext/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
-	<script src="/assets/local/misc/static/ext/bootstrap/js/bootstrap.min.js"></script>
-	<link href="/assets/local/misc/static/ext/bootstrap-select/bootstrap-select.css" rel="stylesheet" type="text/css"/>
-	<script src="/assets/local/misc/static/ext/bootstrap-select/bootstrap-select.js"></script>
+	<link href="[% mnt_pfx %]/assets/local/misc/static/ext/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="[% mnt_pfx %]/assets/local/misc/static/ext/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	<script src="[% mnt_pfx %]/assets/local/misc/static/ext/bootstrap/js/bootstrap.min.js"></script>
+	<link href="[% mnt_pfx %]/assets/local/misc/static/ext/bootstrap-select/bootstrap-select.css" rel="stylesheet" type="text/css"/>
+	<script src="[% mnt_pfx %]/assets/local/misc/static/ext/bootstrap-select/bootstrap-select.js"></script>
 
-	<link rel="stylesheet" href="/assets/local/misc/static/css/style.css">
+	<link rel="stylesheet" href="[% mnt_pfx %]/assets/local/misc/static/css/style.css">
 
-	<script src="/assets/local/misc/static/js/ajax.js"></script>
-  <script src="/assets/local/misc/static/js/script.js"></script>
+	<script src="[% mnt_pfx %]/assets/local/misc/static/js/ajax.js"></script>
+  <script src="[% mnt_pfx %]/assets/local/misc/static/js/script.js"></script>
 
 </head>
 <body>
