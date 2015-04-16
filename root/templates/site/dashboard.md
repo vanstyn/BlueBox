@@ -6,6 +6,9 @@
 </ul>
 
 
+[% INCLUDE site/rich.tt %]
+
+
 ##### Edit specific home page sub-templates:
 
 These are links to the specific parts of the landing page which have text which can be easily edited (i.e have very simple HTML markup). These can also be edited from the home page (link above) by mouse-over the specific sections and click the edit control
