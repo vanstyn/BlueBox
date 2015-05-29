@@ -2,7 +2,7 @@ package BlueBox;
 use Moose;
 use namespace::autoclean;
 
-use RapidApp 1.0204;
+use RapidApp 1.0401_09;
 
 # ----
 # RapidApp is enabled for the Catalyst application by loading one or
@@ -76,7 +76,10 @@ __PACKAGE__->config(
       navtree_init_width => 210,
       banner_template => 'banner.html',
       dashboard_url => '/tple/site/dashboard.md',
-      template_navtree_regex => $tpl_regex
+      template_navtree_regex => $tpl_regex,
+      main_module_params => {
+        require_role => 'administrator'
+      }
     },
     
     # The Template Controller functionality is a part of RapidApp core. This
